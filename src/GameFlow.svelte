@@ -3,7 +3,7 @@
   import { Level } from "./level.js";
   import { flowScene, level } from "./stores.js";
   import Dialog from "./Dialog.svelte";
-  import Merge from "./Merge.svelte"
+  import Merge from "./Merge.svelte";
 
   let levelDisplay = [];
 
@@ -22,6 +22,9 @@
       (_, index) => !(index > get(level).advancement)
     );
   }
+
+  advance();
+  advance();
 
   computeDisplay();
 </script>

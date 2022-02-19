@@ -3,7 +3,7 @@ import { levelsComplete } from './stores'
 
 function makeProgression (reset = false) {
   const progression = {
-    levelsComplete: []
+    levelsComplete: {}
   }
 
   if (!reset) {
@@ -23,5 +23,7 @@ export function loadProgression () {
   const progressionStr =
     localStorage.getItem('progression') || makeProgression()
   const progression = JSON.parse(progressionStr)
-  levelsComplete.set(progression['levelComplete'])
+
+  if (progression['levelsComplete'])
+    levelsComplete.set(progression['levelsComplete'])
 }

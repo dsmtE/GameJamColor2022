@@ -1,9 +1,10 @@
 import levels from './data/levels_data'
 import { levelsComplete } from './stores'
+import { get } from 'svelte/store'
 
 export class Level {
   constructor (gameFlow) {
-    this.name = gameFlow.level
+    this.name = gameFlow.levelName
     this.flow = []
     this.advancement = 0
     this.complete = false
@@ -52,7 +53,7 @@ export class Level {
   }
 
   end () {
-    const newComplete = { ...levelsComplete }
+    const newComplete = { ...get(levelsComplete) }
     newComplete[this.name] = true
     levelsComplete.set(newComplete)
   }
