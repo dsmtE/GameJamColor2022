@@ -20,12 +20,10 @@ export class Level {
     this.failSolution = this.levelData['failSolution'] || ''
 
     this.flow = []
-
-    this.levelData['dialogsBegin'].forEach(sentence => {
-      this.flow.push(new Dialog({ type: 'dialog', content: sentence }))
-    })
-
-    // ajouet jeu dans le flow
+    this.flow.push(
+      new Dialog({ type: 'dialog', content: this.levelData['dialogsBegin'] })
+    )
+    this.flow.push(new Game({ type: 'game' }))
   }
 
   gameEndWithSolution (solution) {
@@ -34,11 +32,12 @@ export class Level {
       expert: 'dialogsExpertSolution',
       fail: 'dialogsFailSolution'
     }
-    console.log(solution)
-    console.log(possibleSolutions[solution])
-    this.levelData[possibleSolutions[solution]].forEach(sentence => {
-      this.flow.push(new Dialog({ type: 'dialog', content: sentence }))
-    })
+    this.flow.push(
+      new Dialog({
+        type: 'dialog',
+        content: this.levelData[possibleSolutions[solution]]
+      })
+    )
   }
 
   isSolutionItem (item) {
@@ -50,6 +49,10 @@ export class Level {
 
   currentFlowType () {
     return this.flow[this.advancement].type
+  }
+
+  currentFlow () {
+    return this.flow[this.advancement]
   }
 
   advance () {
@@ -68,14 +71,20 @@ export class Level {
 }
 
 class Flow {
-  constructor (levelStep) {
-    this.type = levelStep['type']
+  constructor (params) {
+    this.type = params['type']
   }
 }
 
 class Dialog extends Flow {
-  constructor (levelStep) {
-    super(levelStep)
-    this.content = levelStep['content']
+  constructor (params) {
+    super(params)
+    this.content = params['content']
+  }
+}
+
+class Game extends Flow {
+  constructor (params) {
+    super(params)
   }
 }
