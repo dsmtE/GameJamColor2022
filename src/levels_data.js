@@ -115,11 +115,40 @@ export default [
   },
   {
     name: 'Un fâcheux incident',
-    startingItems: [],
-    recipes: [],
-    easySolution: '',
-    expertSolution: '',
-    failSolution: '',
+    startingItems: [
+      'Scotch',
+      'Colle',
+      'Chewing-gum',
+      'Photo de classe',
+      'Ciseaux',
+      'Papier',
+      'Crayons de couleur',
+      'Téléphone',
+    ],
+    recipes: [
+      {input: ['Scotch', 'Colle'], output: ['Super glue']},
+      {
+        input: ['Super glue', 'Chewing-gum'],
+        output: ['Méga glue de la mort qui tue']
+      },
+      {input: ['Papier', 'Crayons de couleur'], output: ['Pub Carglass']},
+      {input: ['Pub Carglass', 'Téléphone'], output: ['Un super réparateur']},
+      {
+        input: ['Photo de classe', 'Ciseaux'],
+        output: ['Photo de Pierre-Siméon']
+      },
+      {
+        input: ['Photo de Pierre-Siméon', 'Papier'],
+        output: ['Image incomplète']
+      },
+      {
+        input: ['Image incomplète', 'Crayons de couleur'],
+        output: ['Le coupable idéal']
+      },
+    ],
+    easySolution: 'Méga glue de la mort qui tue',
+    expertSolution: 'Un super réparateur',
+    failSolution: 'Le coupable idéal',
     dialogsBegin: [
       'Oh non, le ballon est parti dans la fenêtre. Elle est en 1000 morceaux, je vais me faire disputer !',
       'À moins que... 😏'
