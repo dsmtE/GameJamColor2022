@@ -1,7 +1,17 @@
 <script>
-  import { flowScene } from "./stores";
+  import { flowScene, levelsComplete } from "./stores";
+  import { saveProgression } from "./save";
+  import levelsData from "./data/levels_data.js";
 
-  const levels = ["level1", 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  let levels = Object.keys(levelsData);
+
+  function reset() {
+    saveProgression(true);
+    levels = Object.keys(levelsData);
+  }
+
+  let localLevelsComplete = {};
+  levelsComplete.subscribe((completion) => (localLevelsComplete = completion));
 </script>
 
 <div class="main">
@@ -12,7 +22,13 @@
         <button on:click={$flowScene.transitionToGame(level)}
           >Niveau {level}</button
         >
+        {#if localLevelsComplete[level]}
+          <p>Completed !!</p>
+        {/if}
       </div>
     {/each}
+  </div>
+  <div class="reset">
+    <button on:click={reset}>DEBUG: Reset progression</button>
   </div>
 </div>

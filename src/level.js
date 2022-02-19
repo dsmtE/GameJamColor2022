@@ -1,26 +1,58 @@
-import levels from './data/levels'
+import levels from './data/levels_data'
+import { levelsComplete } from './stores'
+import { get } from 'svelte/store'
 
 export class Level {
   constructor (gameFlow) {
-    this.name = gameFlow.level
+    this.name = gameFlow.levelName
     this.flow = []
     this.advancement = 0
     this.complete = false
+    this.levelData = undefined
     this.load()
   }
 
   load () {
-    const levelData = levels[this.name]
+    this.levelData = levels[this.name]
+
+    this.easySolution = this.levelData['easySolution'] || ''
+    this.expertSolution = this.levelData['expertSolution'] || ''
+    this.failSolution = this.levelData['failSolution'] || ''
+
     this.flow = []
-    levelData.forEach(levelStep => {
-      if (levelStep['type'] === 'dialog') {
-        this.flow.push(new Dialog(levelStep))
-      }
-    })
+    this.flow.push(
+      new Dialog({ type: 'dialog', content: this.levelData['dialogsBegin'] })
+    )
+    this.flow.push(new Game({ type: 'game' }))
+  }
+
+  gameEndWithSolution (solution) {
+    const possibleSolutions = {
+      easy: 'dialogsEasySolution',
+      expert: 'dialogsExpertSolution',
+      fail: 'dialogsFailSolution'
+    }
+    this.flow.push(
+      new Dialog({
+        type: 'dialog',
+        content: this.levelData[possibleSolutions[solution]]
+      })
+    )
+  }
+
+  isSolutionItem (item) {
+    if (item === this.easySolution) return 'easy'
+    if (item === this.expertSolution) return 'expert'
+    if (item === this.failSolution) return 'fail'
+    return false
   }
 
   currentFlowType () {
     return this.flow[this.advancement].type
+  }
+
+  currentFlow () {
+    return this.flow[this.advancement]
   }
 
   advance () {
@@ -30,17 +62,29 @@ export class Level {
   isComplete () {
     if (this.flow.length - 1 < this.advancement) return true
   }
+
+  end () {
+    const newComplete = { ...get(levelsComplete) }
+    newComplete[this.name] = true
+    levelsComplete.set(newComplete)
+  }
 }
 
 class Flow {
-  constructor (levelStep) {
-    this.type = levelStep['type']
+  constructor (params) {
+    this.type = params['type']
   }
 }
 
 class Dialog extends Flow {
-  constructor (levelStep) {
-    super(levelStep)
-    this.content = levelStep['content']
+  constructor (params) {
+    super(params)
+    this.content = params['content']
+  }
+}
+
+class Game extends Flow {
+  constructor (params) {
+    super(params)
   }
 }

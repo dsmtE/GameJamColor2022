@@ -1,29 +1,32 @@
 <script>
-  import 'papercss/dist/paper.min.css';
+  import "papercss/dist/paper.min.css";
 
   import { flowScene } from "./stores";
+  import { loadProgression } from "./save";
+  import { Home, Intro } from "./scenes";
+
+  // Import scenes
   import HomeScene from "./Home.svelte";
+  import IntroScene from "./Intro.svelte";
   import LevelSelection from "./LevelSelection.svelte";
   import Achievements from "./Achievements.svelte";
   import Settings from "./Settings.svelte";
   import Menu from "./Menu.svelte";
   import GameFlow from "./GameFlow.svelte";
 
-  import { Home } from "./scenes";
-  import Merge from './Merge.svelte'
-
-  flowScene.set(new Home());
+  flowScene.set(new Intro());
+  loadProgression();
 </script>
 
 <main>
   <Menu />
+  {#if $flowScene.name === "intro"}<IntroScene />{/if}
   {#if $flowScene.name === "home"}<HomeScene />{/if}
   {#if $flowScene.name === "levelSelection"}<LevelSelection />{/if}
   {#if $flowScene.name === "achievements"}<Achievements />{/if}
   {#if $flowScene.name === "settings"}<Settings />{/if}
   {#if $flowScene.name === "gameFlow"}<GameFlow />{/if}
 </main>
-<Merge />
 
 <style>
   main {
