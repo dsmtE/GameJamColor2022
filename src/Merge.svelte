@@ -88,7 +88,7 @@
       event.target.classList.remove("drop-target");
       event.relatedTarget.classList.remove("can-drop");
       //delete object
-      let item = event.relatedTarget.textContent.slice(0, -1);
+      let item = event.relatedTarget.textContent.slice(1, -1);
       mixingBowl.forEach((element, i) => {
         if (element == item) {
           mixingBowl.splice(i, 1);
@@ -98,7 +98,7 @@
     },
     ondrop: function (event) {
       //add object
-      let item = event.relatedTarget.textContent.slice(0, -1);
+      let item = event.relatedTarget.textContent.slice(1, -1);
       mixingBowl = new Array(...new Set([...mixingBowl, item]));
       newElem();
     },
