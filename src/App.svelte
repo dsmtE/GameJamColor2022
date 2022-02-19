@@ -1,4 +1,6 @@
 <script>
+  import 'papercss/dist/paper.min.css';
+
   import { flowScene } from "./stores";
   import HomeScene from "./Home.svelte";
   import LevelSelection from "./LevelSelection.svelte";
