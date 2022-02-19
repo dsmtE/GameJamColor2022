@@ -3,7 +3,6 @@
 </script>
 
 <div class="main">
-  <h1>{$gameName}</h1>
   <h2>
     <button on:click={$flowScene.transitionToLevelSelection()}>Jouer</button>
   </h2>
