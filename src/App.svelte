@@ -1,18 +1,21 @@
 <script>
-  import 'papercss/dist/paper.min.css';
+  import "papercss/dist/paper.min.css";
 
   import { flowScene } from "./stores";
+  import { loadProgression } from "./save";
+  import { Home, Intro } from "./scenes";
+
+  // Import scenes
   import HomeScene from "./Home.svelte";
+  import IntroScene from "./Intro.svelte";
   import LevelSelection from "./LevelSelection.svelte";
   import Achievements from "./Achievements.svelte";
   import Settings from "./Settings.svelte";
   import Menu from "./Menu.svelte";
   import GameFlow from "./GameFlow.svelte";
-  import IntroScene from "./Intro.svelte"
 
-  import { Intro } from "./scenes"
-
-  flowScene.set(new Intro())
+  flowScene.set(new Intro());
+  loadProgression();
 </script>
 
 <main>

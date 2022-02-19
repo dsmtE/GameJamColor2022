@@ -21,6 +21,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "interactjs": "^1.10.11",
     "papercss": "^1.8.3",
     "sirv-cli": "^2.0.0",
     "spaper": "^0.4.6"

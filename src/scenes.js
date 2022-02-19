@@ -1,4 +1,6 @@
-import { flowScene } from './stores.js'
+import { get } from 'svelte/store'
+import { saveProgression } from './save.js'
+import { flowScene, level } from './stores.js'
 
 class FlowScene {
   constructor (name) {
@@ -79,9 +81,9 @@ export class Achievements extends FlowScene {
 }
 
 export class GameFlow extends FlowScene {
-  constructor (level) {
+  constructor (levelName) {
     super('gameFlow')
-    this.level = level
+    this.levelName = levelName
   }
   transitionToHome () {
     flowScene.set(new Home())
@@ -91,8 +93,11 @@ export class GameFlow extends FlowScene {
     return
   }
   transitionToLevelSelection (completed = false) {
+    if (completed) {
+      get(level).end()
+      saveProgression()
+    }
     flowScene.set(new LevelSelection())
-    console.log('WE NEED TO COMPLETE THE LEVEL HERE !!!')
   }
 }
 

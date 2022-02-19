@@ -1,39 +1,42 @@
 <script>
   import { get } from "svelte/store";
   import { Level } from "./level.js";
-  import { flowScene } from "./stores.js";
+  import { flowScene, level } from "./stores.js";
   import Dialog from "./Dialog.svelte";
-  import Merge from "./Merge.svelte"
+  import Merge from "./Merge.svelte";
 
-  let level = new Level(get(flowScene));
-  let levelDisplay = [];
+  let currentLevel = new Level(get(flowScene));
+  level.set(currentLevel);
 
   function advance() {
-    level.advance();
-    computeDisplay();
-    if (level.isComplete()) {
+    currentLevel.advance();
+
+    if (currentLevel.isComplete()) {
       get(flowScene).transitionToLevelSelection(true);
+    } else {
+      // svelte tricks update
+      currentLevel = currentLevel;
     }
   }
 
-  function computeDisplay() {
-    levelDisplay = level.flow.filter(
-      (_, index) => !(index > level.advancement)
-    );
+  function callBackNewItem(event) {
+    for (let key in event.detail) {
+      const mixingItem = event.detail[key];
+      const isSolution = get(level).isSolutionItem(mixingItem);
+      if (isSolution) {
+        get(level).gameEndWithSolution(isSolution);
+        advance();
+      }
+    }
   }
-
-  computeDisplay();
 </script>
 
 <main>
-  {#each levelDisplay as step}
-    {#if step.type === "dialog"}
-      <Dialog dialog={step} />
-    {/if}
-  {/each}
-  {#if ["dialog"].includes(level.currentFlowType())}
-    <button on:click={advance}>Okay.</button>
+  {#if currentLevel.currentFlowType() === "dialog"}
+    <Dialog dialog={currentLevel.currentFlow()} on:end={advance} />
+  {/if}
+
+  {#if currentLevel.currentFlowType() === "game"}
+    <Merge on:newItem={callBackNewItem} />
   {/if}
 </main>
-
-<Merge />
