@@ -2,47 +2,40 @@
 	import {ComputeMixing} from "./core/recipesUtils"
 	import levelsRecipes from "./data/levels_data"
 	import interact from "interactjs";
-
-	import {flip} from 'svelte/animate';
 	
 	let level = 0
 
 	// copy startingItems in current inventory
 	let inventory =  [...levelsRecipes[level].startingItems]
 
+	let ingredients = []
 	let mixingBowl = []
 
-	function handleDragStartFromInventory(event, itemIndex) {
-		const data = {
-			"itemIndex": itemIndex
-		};
-   		event.dataTransfer.setData('text/plain', JSON.stringify(data));
-    }
-
-	function handleDragEndFromInventory(event, itemIndex) {
-		event.preventDefault();
-    }
-
-	function clearMixingBowl() {
+	function resetMove () {
+		ingredients.forEach(element => {
+			element.style.transform = 'translate(0px, 0px)'
+			element.setAttribute('data-x', '0')
+			element.setAttribute('data-y', '0')
+			if (element.classList.contains('can-drop')) {
+			// remove the drop feedback style
+			element.classList.remove('can-drop')
+		}
+		});
 		mixingBowl = []
 	}
 
-	function handleDragDropToMixingBowl(event) {
-		event.preventDefault();
-
-		const data = JSON.parse(event.dataTransfer.getData("text/plain"));
-		
-		mixingBowl = new Array(...new Set([...mixingBowl, inventory[data.itemIndex]]));
-		
+	function newElem() {
+		//new elem ?
 		const mixingResult = ComputeMixing(mixingBowl, levelsRecipes[level].recipes);
 		if(mixingResult !== undefined) {
 			mixingBowl = [];
-			alert("You unlock" + mixingResult);
+			console.log("You unlock " + mixingResult);
 			inventory = new Array(...new Set([...inventory, ...mixingResult]));
+			resetMove();
 		}
-    }
+	}
 
-// temp
+//DRAG N DROP
 
   function dragMoveListener (event) {
   var target = event.target
@@ -61,7 +54,7 @@
 // enable draggables to be dropped into this
 interact('.dropzone').dropzone({
   // only accept elements matching this CSS selector
-  accept: '#yes-drop',
+  accept: '#item',
   // Require a 75% element overlap for a drop to be possible
   overlap: 0.75,
 
@@ -78,16 +71,25 @@ interact('.dropzone').dropzone({
     // feedback the possibility of a drop
     dropzoneElement.classList.add('drop-target')
     draggableElement.classList.add('can-drop')
-    draggableElement.textContent = 'Dragged in'
   },
   ondragleave: function (event) {
     // remove the drop feedback style
     event.target.classList.remove('drop-target')
     event.relatedTarget.classList.remove('can-drop')
-    event.relatedTarget.textContent = 'Dragged out'
+	//delete object
+	let item = event.relatedTarget.textContent.slice(0,-1)
+	mixingBowl.forEach((element, i) => {
+		if (element == item) {
+			mixingBowl.splice(i, 1)
+		}
+	});
+	newElem()
   },
   ondrop: function (event) {
-    event.relatedTarget.textContent = 'Dropped'
+	  //add object
+	  let item = event.relatedTarget.textContent.slice(0,-1)
+	  mixingBowl = new Array(...new Set([...mixingBowl, item]));
+	  newElem()
   },
   ondropdeactivate: function (event) {
     // remove active dropzone feedback
@@ -110,55 +112,23 @@ interact('.drag-drop')
     listeners: { move: dragMoveListener }
   })
 
-// temp 
-
 </script>
 
 <h1> niveau {levelsRecipes[level].name} </h1>
 
-<!-- temp -->
-
-<div id="no-drop" class="drag-drop"> #no-drop </div>
-
-<div id="yes-drop" class="drag-drop"> #yes-drop </div>
-
-<div id="outer-dropzone" class="dropzone">
-  #outer-dropzone
-  <div id="inner-dropzone" class="dropzone">#inner-dropzone</div>
- </div>
-
-<!-- temp -->
-
 <div>
 	<b>MixingBowl</b>
-	<button on:click={e => clearMixingBowl()} > clear </button>
-	<ul id="mixingBowl"
-		on:drop={e => handleDragDropToMixingBowl(e)}
-		ondragover="return false">
-		{#each mixingBowl as item, itemIndex (item)}
-			<div class="item" animate:flip>
-				<li>
-					{item}
-				</li>
-			</div>
-		{/each}
-	</ul>
-	</div>
+	<button on:click={e => resetMove()} > Ranger la table </button>
+	<div id= "MixingBowl" class="dropzone"> </div>
 
-<div>
-<b>Inventory</b>
-<ul>
+	<b>Inventory</b>
 	{#each inventory as item, itemIndex (item)}
-		<div class="item" animate:flip>
-			<li draggable={true}
-				on:dragstart={e => handleDragStartFromInventory(e, itemIndex)}
-				on:dragend={e => handleDragEndFromInventory(e, itemIndex)}>
+		<div id="item" class="drag-drop" bind:this = {ingredients[itemIndex]}>
 				{item}
-			</li>
 		</div>
 	{/each}
-</ul>
 </div>
+
 
 <style>
 
@@ -184,13 +154,7 @@ interact('.drag-drop')
 		padding: 10px;
 	}
 
-	/* temp */
-
-	#outer-dropzone {
-	height: 200px;
-	}
-
-	#inner-dropzone {
+	#MixingBowl {
 	height: 140px;
 	}
 
@@ -217,6 +181,7 @@ interact('.drag-drop')
 	.drag-drop {
 	display: inline-block;
 	min-width: 40px;
+	max-height: 45px;
 	padding: 2em 0.5em;
 	margin: 1rem 0 0 1rem;
 
@@ -230,10 +195,8 @@ interact('.drag-drop')
 	transition: background-color 0.3s;
 	}
 
-	:global(.drag-drop.can-drop) {
+	div:global(.drag-drop.can-drop) {
 	color: #000;
 	background-color: #4e4;
 	}
-
-/* temp */
 </style>
