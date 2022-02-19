@@ -1,0 +1,26 @@
+export default {
+  tournesol: { src: "tournesol", name: "Tournesol" },
+  cisaux: { src: "sizo", name: "Ciseaux" },
+  crayonsCouleur: { src: "crayons", name: "Crayons de couleur" },
+  briquet: { src: "briquet", name: "Briquet" },
+  echelle: { src: "echelle", name: "Echelle" },
+  tissu: { src: "tissues", name: "Tissu" },
+  colle: { src: "colle", name: "Colle" },
+  costumeHero: { src: "costume_sh", name: "Costume de super-héros" },
+  perlinpinpin: {
+    src: "poudre_de_perlinpinpin",
+    name: "Poudre de perlinpinpin",
+  },
+  stylo: { src: "stylo", name: "Stylo" },
+  tailleCrayon: { src: "taille_crayon", name: "Taille-crayon" },
+  telephone: { src: "telephone", name: "Téléphone" },
+  terre: { src: "terre", name: "Terre" },
+  tole: { src: "tole", name: "Tôle" },
+  petards: { src: "petard", name: "Pétards" },
+  huile: { src: "huile", name: "Huile de Tournesol" },
+  tronconneuse: { src: "troconneuse", name: "Tronçonneuse" },
+  tronconneuseSansHuile: {
+    src: "troconneuse_sans_huile",
+    name: "Tronçonneuse sans huile",
+  },
+};
