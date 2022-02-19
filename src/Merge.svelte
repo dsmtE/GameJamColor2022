@@ -1,10 +1,11 @@
 <script>
   import { ComputeMixing } from "./core/recipesUtils";
-  import levelsRecipes from "./data/levels_data";
   import interact from "interactjs";
   import { createEventDispatcher } from "svelte";
   import { get } from "svelte/store";
   import { level } from "./stores.js";
+  import ImageComponent from "./Image.svelte";
+  import imagesData from "./data/img_data";
 
   const dispatch = createEventDispatcher();
 
@@ -14,6 +15,12 @@
 
   let ingredients = [];
   let mixingBowl = [];
+
+  function getImageDataFromName(name) {
+    const data = imagesData[name] || { src: "" };
+    const src = data["src"];
+    return { name, src };
+  }
 
   function resetMove() {
     ingredients.forEach((element) => {
@@ -126,7 +133,7 @@
   <b>Inventory</b>
   {#each inventory as item, itemIndex (item)}
     <div id="item" class="drag-drop" bind:this={ingredients[itemIndex]}>
-      {item}
+      <ImageComponent object={getImageDataFromName(item)} />
     </div>
   {/each}
 </div>
