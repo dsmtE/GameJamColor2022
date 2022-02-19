@@ -1,7 +1,7 @@
 <script>
   import { flowScene, levelsComplete } from "./stores";
 
-  const levels = ["level1", 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const levels = ["Ballon perché", 2, 3, 4, 5, 6, 7, 8, 9, 10];
 </script>
 
 <div class="main">

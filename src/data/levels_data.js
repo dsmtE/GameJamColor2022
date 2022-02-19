@@ -1,5 +1,5 @@
-export default [
-  {
+export default {
+  "Ballon perché": {
     name: "Ballon perché",
     startingItems: [
       "Tissu",
@@ -11,6 +11,7 @@ export default [
       "Colle",
       "Terre",
       "Stylo",
+      "Pétards",
     ],
     recipes: [
       { input: ["Stylo", "Colle"], output: ["Échelle"] },
@@ -22,7 +23,7 @@ export default [
         input: ["Tissu", "Crayons de couleur"],
         output: ["Costume de super-héros"],
       },
-      { input: ["Pétard", "Terre"], output: ["Poudre de perlinpinpin"] },
+      { input: ["Pétards", "Terre"], output: ["Poudre de perlinpinpin"] },
       {
         input: ["Métal en dent de scie", "Moteur"],
         output: ["Tronçonneuse sans huile"],
@@ -51,7 +52,7 @@ export default [
       "Oups, je comprends maintenant pourquoi on ne m'a jamais laissé me servir de la tronçonneuse à la maison 😳",
     ],
   },
-  {
+  "Infiltration au CDI": {
     name: "Infiltration au CDI",
     startingItems: [
       "Taille-crayon",
@@ -94,7 +95,7 @@ export default [
       "C'est mignon mais ce n'est pas avec ça qu'on va ouvrir la porte ! Dommage, je suppose que jouer avec la chèvre c'est bien aussi.",
     ],
   },
-  {
+  "Révolte contre le caïd": {
     name: "Révolte contre le caïd",
     startingItems: [
       "Stylo",
@@ -131,7 +132,7 @@ export default [
       "<i>Le pétard vous explose à la figure, il fallait souffler, pas fumer le pétard voyons !</i>",
     ],
   },
-  {
+  "Un fâcheux incident": {
     name: "Un fâcheux incident",
     startingItems: [
       "Scotch",
@@ -181,7 +182,7 @@ export default [
       "Pourtant mes bonhommes bâton étaient magnifiques !",
     ],
   },
-  {
+  "Le contrôle": {
     name: "Le contrôle",
     startingItems: [
       "Papier",
@@ -246,4 +247,4 @@ export default [
       "Les faux billets ne lui ont pas vraiment plu et je crois que ses anciens amis veulent ma peau 😳",
     ],
   },
-];
+};

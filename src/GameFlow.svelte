@@ -3,6 +3,7 @@
   import { Level } from "./level.js";
   import { flowScene, level } from "./stores.js";
   import Dialog from "./Dialog.svelte";
+  import Merge from "./Merge.svelte"
 
   let levelDisplay = [];
 
@@ -35,3 +36,5 @@
     <button on:click={advance}>Okay.</button>
   {/if}
 </main>
+
+<Merge />
