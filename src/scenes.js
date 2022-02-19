@@ -1,8 +1,28 @@
 import { flowScene } from './stores.js'
 
-export class Home {
+class FlowScene {
+  constructor (name) {
+    this.name = name
+  }
+  transitionToLevelSelection () {
+    throw Error('Not implemented')
+  }
+  transitionToSettings () {
+    throw Error('Not implemented')
+  }
+  transitionToAchievements () {
+    throw Error('Not implemented')
+  }
+  transitionToHome () {
+    throw Error('Not implemented')
+  }
+  transitionToGame () {
+    throw Error('Not implemented')
+  }
+}
+export class Home extends FlowScene {
   constructor () {
-    this.name = 'home'
+    super('home')
   }
   transitionToLevelSelection () {
     flowScene.set(new LevelSelection())
@@ -18,29 +38,60 @@ export class Home {
   }
 }
 
-export class LevelSelection {
+export class LevelSelection extends FlowScene {
   constructor () {
-    this.name = 'levelSelection'
+    super('levelSelection')
   }
   transitionToHome () {
     flowScene.set(new Home())
+  }
+  transitionToLevelSelection () {
+    return
+  }
+  transitionToGame (level) {
+    console.log('Transition to level ' + level)
+    flowScene.set(new GameFlow(level))
   }
 }
 
-export class Settings {
+export class Settings extends FlowScene {
   constructor () {
-    this.name = 'settings'
+    super('settings')
   }
   transitionToHome () {
     flowScene.set(new Home())
+  }
+  transitionToSettings () {
+    return
   }
 }
 
-export class Achievements {
+export class Achievements extends FlowScene {
   constructor () {
-    this.name = 'achievements'
+    super('achievements')
   }
   transitionToHome () {
     flowScene.set(new Home())
+  }
+  transitionToAchievements () {
+    return
+  }
+}
+
+export class GameFlow extends FlowScene {
+  constructor (level) {
+    super('gameFlow')
+    this.level = level
+  }
+  transitionToHome () {
+    flowScene.set(new Home())
+    console.log('WE NEED TO SAVE HERE !!!')
+  }
+  transitionToGame () {
+    return
+  }
+  transitionToLevelSelection (completed = false) {
+    flowScene.set(new LevelSelection())
+    console.log('WE NEED TO COMPLETE THE LEVEL HERE !!!')
   }
 }
