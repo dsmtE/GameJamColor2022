@@ -1,5 +1,5 @@
 <script>
-  import { flowScene } from "./stores";
+  import { flowScene, levelsComplete } from "./stores";
 
   const levels = ["level1", 2, 3, 4, 5, 6, 7, 8, 9, 10];
 </script>
@@ -12,6 +12,9 @@
         <button on:click={$flowScene.transitionToGame(level)}
           >Niveau {level}</button
         >
+        {#if $levelsComplete && $levelsComplete[level]}
+          <p>Completed !!</p>
+        {/if}
       </div>
     {/each}
   </div>

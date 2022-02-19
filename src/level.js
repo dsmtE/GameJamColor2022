@@ -1,8 +1,9 @@
 import levels from './data/levels'
+import { levelsComplete } from './stores'
 
 export class Level {
   constructor (gameFlow) {
-    this.name = gameFlow.level
+    this.name = gameFlow.levelName
     this.flow = []
     this.advancement = 0
     this.complete = false
@@ -29,6 +30,12 @@ export class Level {
 
   isComplete () {
     if (this.flow.length - 1 < this.advancement) return true
+  }
+
+  end () {
+    const newComplete = { ...levelsComplete }
+    newComplete[this.name] = true
+    levelsComplete.set(newComplete)
   }
 }
 

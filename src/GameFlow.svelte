@@ -1,23 +1,24 @@
 <script>
   import { get } from "svelte/store";
   import { Level } from "./level.js";
-  import { flowScene } from "./stores.js";
+  import { flowScene, level } from "./stores.js";
   import Dialog from "./Dialog.svelte";
 
-  let level = new Level(get(flowScene));
   let levelDisplay = [];
 
+  level.set(new Level(get(flowScene)));
+
   function advance() {
-    level.advance();
+    get(level).advance();
     computeDisplay();
-    if (level.isComplete()) {
+    if (get(level).isComplete()) {
       get(flowScene).transitionToLevelSelection(true);
     }
   }
 
   function computeDisplay() {
-    levelDisplay = level.flow.filter(
-      (_, index) => !(index > level.advancement)
+    levelDisplay = get(level).flow.filter(
+      (_, index) => !(index > get(level).advancement)
     );
   }
 
@@ -30,7 +31,7 @@
       <Dialog dialog={step} />
     {/if}
   {/each}
-  {#if ["dialog"].includes(level.currentFlowType())}
+  {#if ["dialog"].includes(get(level).currentFlowType())}
     <button on:click={advance}>Okay.</button>
   {/if}
 </main>
