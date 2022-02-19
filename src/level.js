@@ -16,36 +16,33 @@ export class Level {
     this.levelData = levels[this.name]
     this.flow = []
 
-    this.levelData['dialogsBegin'].forEach(sentence => {
-      this.flow.push(new Dialog({ type: 'dialog', content: sentence }))
-    })
+    this.flow.push(new Dialog({ type: "dialog", content: this.levelData["dialogsBegin"] }));
+
+    this.flow.push(new Game({ type: "game"}));
 
     // ajouet jeu dans le flow
-
-    this.gameEndWithSolution(true)
+    this.gameEndWithSolution(true);
   }
 
   gameEndWithSolution (easy = false, expert = false, fail = false) {
     if (easy)
-      this.levelData['dialogsEasySolution'].forEach(sentence => {
-        this.flow.push(new Dialog({ type: 'dialog', content: sentence }))
-      })
+      this.flow.push(new Dialog({ type: "dialog", content: this.levelData["dialogsEasySolution"] }));
     if (expert)
-      this.levelData['dialogsExpertSolution'].forEach(sentence => {
-        this.flow.push(new Dialog({ type: 'dialog', content: sentence }))
-      })
+      this.flow.push(new Dialog({ type: "dialog", content: this.levelData["dialogsExpertSolution"] }));
     if (fail)
-      this.levelData['dialogsFailSolution'].forEach(sentence => {
-        this.flow.push(new Dialog({ type: 'dialog', content: sentence }))
-      })
+    this.flow.push(new Dialog({ type: "dialog", content: this.levelData["dialogsFailSolution"] }));
   }
 
   currentFlowType () {
     return this.flow[this.advancement].type
   }
 
-  advance () {
-    this.advancement += 1
+  currentFlow() {
+    return this.flow[this.advancement];
+  }
+
+  advance() {
+    this.advancement += 1;
   }
 
   isComplete () {
@@ -60,14 +57,20 @@ export class Level {
 }
 
 class Flow {
-  constructor (levelStep) {
-    this.type = levelStep['type']
+  constructor(params) {
+    this.type = params["type"];
   }
 }
 
 class Dialog extends Flow {
-  constructor (levelStep) {
-    super(levelStep)
-    this.content = levelStep['content']
+  constructor(params) {
+    super(params);
+    this.content = params["content"];
+  }
+}
+
+class Game extends Flow {
+  constructor(params) {
+    super(params);
   }
 }
