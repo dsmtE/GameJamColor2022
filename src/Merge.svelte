@@ -204,14 +204,14 @@ interact('.drag-drop')
 	transition: background-color 0.3s;
 	}
 
-	:global(.drop-active) {
-	border-color: rgb(240, 50, 50);
+	div:global(.drop-active) {
+		border-color: rgb(240, 50, 50);
 	}
 
-	:global(.drop-target) {
-	background-color: rgb(157, 196, 223);
-	border-color: #fff;
-	border-style: solid;
+	div:global(.drop-target) {
+		background-color: rgb(157, 196, 223);
+		border-color: #fff;
+		border-style: solid;
 	}
 
 	.drag-drop {
