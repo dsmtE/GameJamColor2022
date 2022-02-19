@@ -17,8 +17,7 @@
     <li>
       <Button
         size="small"
-        block="true"
-        href="https://github.com/dsmtE/GameJamColor2022">Github</Button
+        block="true" on:click={() => window.open("https://github.com/dsmtE/GameJamColor2022", '_blank')}>Github</Button
       >
     </li>
   </ul>
