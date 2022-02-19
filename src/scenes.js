@@ -101,13 +101,3 @@ export class GameFlow extends FlowScene {
   }
 }
 
-export class Intro extends FlowScene {
-  constructor() {
-    super("intro")
-  }
-
-  transitionToHome() {
-    flowScene.set(new Home())
-  }
-}
-

@@ -1,11 +1,15 @@
 <script>
-  import { gameName, flowScene } from "./stores";
+  import { gameName, flowScene, introText } from "./stores";
+  import { Article, Button } from "spaper"
 </script>
 
 <div class="main">
-  <h2>
-    <button on:click={$flowScene.transitionToLevelSelection()}>Jouer</button>
-  </h2>
+    <Article title={$gameName} border>
+        {@html $introText}
+        <Button on:click={$flowScene.transitionToLevelSelection()}>Jouer</Button>
+    </Article>
+
+    <br/>
   <div>
     <button on:click={$flowScene.transitionToAchievements()}>Succès</button>
     <button on:click={$flowScene.transitionToSettings()}>Paramètres</button>

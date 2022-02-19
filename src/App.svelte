@@ -3,24 +3,22 @@
 
   import { flowScene } from "./stores";
   import { loadProgression } from "./save";
-  import { Home, Intro } from "./scenes";
+  import { Home } from "./scenes";
 
   // Import scenes
   import HomeScene from "./Home.svelte";
-  import IntroScene from "./Intro.svelte";
   import LevelSelection from "./LevelSelection.svelte";
   import Achievements from "./Achievements.svelte";
   import Settings from "./Settings.svelte";
   import Menu from "./Menu.svelte";
   import GameFlow from "./GameFlow.svelte";
 
-  flowScene.set(new Intro());
+  flowScene.set(new Home());
   loadProgression();
 </script>
 
 <main>
   <Menu />
-  {#if $flowScene.name === "intro"}<IntroScene />{/if}
   {#if $flowScene.name === "home"}<HomeScene />{/if}
   {#if $flowScene.name === "levelSelection"}<LevelSelection />{/if}
   {#if $flowScene.name === "achievements"}<Achievements />{/if}
