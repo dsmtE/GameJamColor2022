@@ -12,8 +12,6 @@
   let currentLevel = get(level);
 
   let inventory = [...currentLevel.startingItems];
-
-  let ingredients = [];
   let mixingBowl = [];
 
   function getImageDataFromName(name) {
@@ -23,7 +21,9 @@
   }
 
   function resetMove() {
-    ingredients.forEach((element) => {
+    Array.from(document.getElementsByClassName("drag-drop"))
+         .forEach((element) =>
+    {
       element.style.transform = "translate(0px, 0px)";
       element.setAttribute("data-x", "0");
       element.setAttribute("data-y", "0");
@@ -132,7 +132,7 @@
 
   <b>Inventory</b>
   {#each inventory as item, itemIndex (item)}
-    <div id="item" class="drag-drop" bind:this={ingredients[itemIndex]}>
+    <div id="item" class="drag-drop">
       <ImageComponent object={getImageDataFromName(item)} />
     </div>
   {/each}
