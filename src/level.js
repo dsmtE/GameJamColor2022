@@ -14,6 +14,11 @@ export class Level {
 
   load () {
     this.levelData = levels[this.name]
+
+    this.easySolution = this.levelData['easySolution'] || ''
+    this.expertSolution = this.levelData['expertSolution'] || ''
+    this.failSolution = this.levelData['failSolution'] || ''
+
     this.flow = []
 
     this.levelData['dialogsBegin'].forEach(sentence => {
@@ -21,23 +26,26 @@ export class Level {
     })
 
     // ajouet jeu dans le flow
-
-    this.gameEndWithSolution(true)
   }
 
-  gameEndWithSolution (easy = false, expert = false, fail = false) {
-    if (easy)
-      this.levelData['dialogsEasySolution'].forEach(sentence => {
-        this.flow.push(new Dialog({ type: 'dialog', content: sentence }))
-      })
-    if (expert)
-      this.levelData['dialogsExpertSolution'].forEach(sentence => {
-        this.flow.push(new Dialog({ type: 'dialog', content: sentence }))
-      })
-    if (fail)
-      this.levelData['dialogsFailSolution'].forEach(sentence => {
-        this.flow.push(new Dialog({ type: 'dialog', content: sentence }))
-      })
+  gameEndWithSolution (solution) {
+    const possibleSolutions = {
+      easy: 'dialogsEasySolution',
+      expert: 'dialogsExpertSolution',
+      fail: 'dialogsFailSolution'
+    }
+    console.log(solution)
+    console.log(possibleSolutions[solution])
+    this.levelData[possibleSolutions[solution]].forEach(sentence => {
+      this.flow.push(new Dialog({ type: 'dialog', content: sentence }))
+    })
+  }
+
+  isSolutionItem (item) {
+    if (item === this.easySolution) return 'easy'
+    if (item === this.expertSolution) return 'expert'
+    if (item === this.failSolution) return 'fail'
+    return false
   }
 
   currentFlowType () {

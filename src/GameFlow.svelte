@@ -23,8 +23,15 @@
     );
   }
 
-  advance();
-  advance();
+  function callBackNewItem(event) {
+    for (let key in event.detail) {
+      const mixingItem = event.detail[key];
+      const isSolution = get(level).isSolutionItem(mixingItem);
+      if (isSolution) {
+        get(level).gameEndWithSolution(isSolution);
+      }
+    }
+  }
 
   computeDisplay();
 </script>
@@ -40,4 +47,4 @@
   {/if}
 </main>
 
-<Merge />
+<Merge on:newItem={callBackNewItem} />

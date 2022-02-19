@@ -2,13 +2,16 @@
   import { ComputeMixing } from "./core/recipesUtils";
   import levelsRecipes from "./data/levels_data";
   import { flip } from "svelte/animate";
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
 
   let level = "Ballon perché";
 
   // copy startingItems in current inventory
   let inventory = [...levelsRecipes[level].startingItems];
 
-  let mixingBowl = [];
+  export let mixingBowl = [];
 
   function handleDragStartFromInventory(event, itemIndex) {
     const data = {
@@ -40,8 +43,8 @@
     );
     if (mixingResult !== undefined) {
       mixingBowl = [];
-      alert("You unlock" + mixingResult);
       inventory = new Array(...new Set([...inventory, ...mixingResult]));
+      dispatch("newItem", mixingResult);
     }
   }
 </script>
