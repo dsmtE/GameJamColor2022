@@ -95,3 +95,14 @@ export class GameFlow extends FlowScene {
     console.log('WE NEED TO COMPLETE THE LEVEL HERE !!!')
   }
 }
+
+export class Intro extends FlowScene {
+  constructor() {
+    super("intro")
+  }
+
+  transitionToHome() {
+    flowScene.set(new Home())
+  }
+}
+
