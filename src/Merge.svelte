@@ -67,7 +67,7 @@
     // only accept elements matching this CSS selector
     accept: "#item",
     // Require a 75% element overlap for a drop to be possible
-    overlap: 0.75,
+    overlap: 0.2,
 
     // listen for drop related events:
 
@@ -132,40 +132,23 @@
 
   <b>Inventory</b>
   {#each inventory as item, itemIndex (item)}
-    <div id="item" class="drag-drop">
-      <ImageComponent object={getImageDataFromName(item)} />
+    <div id="item" class="drag-drop object">  
+      <img src={"./img/" + getImageDataFromName(item).src + ".png"} alt={getImageDataFromName(item).name} />
+      <p>{getImageDataFromName(item).name}</p>
     </div>
   {/each}
 </div>
 
 <style>
-  .item {
-    display: inline; /* required for flip to work */
+  .object {
+    flex-direction: column;
+    float: right;
+    width: 120px;
   }
-
-  .item {
-    display: inline; /* required for flip to work */
+  img {
+    height: 120px;
   }
-
-  li {
-    background-color: lightgray;
-    cursor: pointer;
-    display: inline-block;
-    margin-right: 10px;
-    padding: 10px;
-  }
-  li:hover {
-    background: orange;
-    color: white;
-  }
-  ul {
-    border: solid lightgray 1px;
-    display: flex; /* required for drag & drop to work when .item display is inline */
-    height: 40px; /* needed when empty */
-    padding: 10px;
-  }
-
-  #MixingBowl {
+   #MixingBowl {
     height: 140px;
   }
 
@@ -191,23 +174,16 @@
 
   .drag-drop {
     display: inline-block;
-    min-width: 40px;
-    max-height: 45px;
     padding: 2em 0.5em;
     margin: 1rem 0 0 1rem;
-
-    color: #fff;
-    background-color: #29e;
-    border: solid 2px #fff;
-
     touch-action: none;
     transform: translate(0px, 0px);
 
     transition: background-color 0.3s;
   }
 
-  div:global(.drag-drop.can-drop) {
+  div:global(.drag-drop.can-drop) img {
     color: #000;
-    background-color: #4e4;
+    border-color: #4e4;
   }
 </style>
