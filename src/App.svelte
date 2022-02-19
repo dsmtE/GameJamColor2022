@@ -8,6 +8,7 @@
   import GameFlow from "./GameFlow.svelte";
 
   import { Home } from "./scenes";
+  import Merge from './Merge.svelte'
 
   flowScene.set(new Home());
 </script>
@@ -20,6 +21,7 @@
   {#if $flowScene.name === "settings"}<Settings />{/if}
   {#if $flowScene.name === "gameFlow"}<GameFlow />{/if}
 </main>
+<Merge />
 
 <style>
   main {
