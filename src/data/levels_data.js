@@ -11,6 +11,7 @@ export default [
       "Colle",
       "Terre",
       "Stylo",
+      "Pétards",
     ],
     recipes: [
       { input: ["Stylo", "Colle"], output: ["Échelle"] },
@@ -22,7 +23,7 @@ export default [
         input: ["Tissu", "Crayons de couleur"],
         output: ["Costume de super-héros"],
       },
-      { input: ["Pétard", "Terre"], output: ["Poudre de perlinpinpin"] },
+      { input: ["Pétards", "Terre"], output: ["Poudre de perlinpinpin"] },
       {
         input: ["Métal en dent de scie", "Moteur"],
         output: ["Tronçonneuse sans huile"],
