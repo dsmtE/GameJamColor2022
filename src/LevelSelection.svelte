@@ -22,7 +22,7 @@
         <button on:click={$flowScene.transitionToGame(level)}
           >Niveau {level}</button
         >
-        {#if localLevelsComplete[level]}
+        {#if localLevelsComplete && localLevelsComplete[levels]}
           <p>Completed !!</p>
         {/if}
       </div>
