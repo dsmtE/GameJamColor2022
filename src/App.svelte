@@ -1,16 +1,20 @@
 <script>
   import { flowScene } from "./stores";
-  import Home from "./Home.svelte";
+  import HomeScene from "./Home.svelte";
   import LevelSelection from "./LevelSelection.svelte";
   import Achievements from "./Achievements.svelte";
   import Settings from "./Settings.svelte";
   import Menu from "./Menu.svelte";
   import GameFlow from "./GameFlow.svelte";
+
+  import { Home } from "./scenes";
+
+  flowScene.set(new Home());
 </script>
 
 <main>
   <Menu />
-  {#if $flowScene.name === "home"}<Home />{/if}
+  {#if $flowScene.name === "home"}<HomeScene />{/if}
   {#if $flowScene.name === "levelSelection"}<LevelSelection />{/if}
   {#if $flowScene.name === "achievements"}<Achievements />{/if}
   {#if $flowScene.name === "settings"}<Settings />{/if}
