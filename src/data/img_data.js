@@ -16,5 +16,13 @@ export default {
   Pétards: { src: 'petard' },
   'Huile de Tournesol': { src: 'huile' },
   Tronçonneuse: { src: 'troconneuse' },
-  'Tronçonneuse sans huile': { src: 'troconneuse_sans_huile' }
+  'Tronçonneuse sans huile': { src: 'troconneuse_sans_huile' },
+  Papier: { src: 'papier' },
+  Clé: { src: 'cle' },
+  Compas: { src: 'compas' },
+  Gomme: { src: 'gomme' },
+  Métal: { src: 'metal' },
+  Moteur: { src: 'moteur' },
+  'Papier vert': { src: 'papier_vert' },
+  'Papier Noir': { src: 'papier_noir' }
 }
