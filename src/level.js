@@ -19,6 +19,9 @@ export class Level {
     this.expertSolution = this.levelData['expertSolution'] || ''
     this.failSolution = this.levelData['failSolution'] || ''
 
+    this.startingItems = this.levelData['startingItems'] || []
+    this.recipes = this.levelData['recipes'] || []
+
     this.flow = []
     this.flow.push(
       new Dialog({ type: 'dialog', content: this.levelData['dialogsBegin'] })
