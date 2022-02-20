@@ -12,11 +12,9 @@
 
 <style>
   .object {
-    flex-direction: column;
-    float: right;
-    width: 120px;
+    width:40%;
   }
   img {
-    height: 120px;
+    height: 50%;
   }
 </style>
