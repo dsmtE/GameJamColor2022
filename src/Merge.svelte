@@ -130,7 +130,6 @@
 
 <div>
   <b>Marmite :</b>
-  <Button on:click={(e) => resetMove()}> Ranger la table </Button>
   <div id="MixingBowl" class="dropzone" />
 
   <b>Inventaire:</b><br>
