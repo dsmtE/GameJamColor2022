@@ -33,7 +33,7 @@ export class Level {
     const possibleSolutions = {
       easy: 'dialogsEasySolution',
       expert: 'dialogsExpertSolution',
-      fail: 'dialogsFailSolution'
+      fail: 'dialogsFail'
     }
     this.flow.push(
       new Dialog({
