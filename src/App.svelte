@@ -16,10 +16,9 @@
 
   flowScene.set(new Home());
   loadProgression();
-
 </script>
 
-<main id="main">
+<main>
   <Menu />
   {#if $flowScene.name === "home"}<HomeScene />{/if}
   {#if $flowScene.name === "about"}<AboutScene />{/if}
@@ -30,7 +29,7 @@
 </main>
 
 <style>
-  #main {
+  main {
     text-align: center;
     padding: 1em;
     margin: 0 auto;
