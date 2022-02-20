@@ -9,7 +9,7 @@
   </h3>
   <ul class="inline">
     <li>
-      <Button size="small" block="true" class="inline">À propos</Button>
+      <Button size="small" block="true" class="inline" on:click={$flowScene.transitionToAbout()}>À propos</Button>
     </li>
     <li>
       <Button

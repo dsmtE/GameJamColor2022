@@ -21,6 +21,9 @@ class FlowScene {
   transitionToGame () {
     throw Error('Not implemented')
   }
+  transitionToAbout() {
+    flowScene.set(new About())
+  }
 }
 export class Home extends FlowScene {
   constructor () {
@@ -37,6 +40,24 @@ export class Home extends FlowScene {
   }
   transitionToHome () {
     return
+  }
+}
+
+export class About extends FlowScene {
+  constructor () {
+    super('about')
+  }
+  transitionToLevelSelection () {
+    return
+  }
+  transitionToSettings () {
+    return
+  }
+  transitionToAchievements () {
+    return
+  }
+  transitionToHome () {
+    flowScene.set(new Home())
   }
 }
 
