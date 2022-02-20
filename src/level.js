@@ -4,6 +4,7 @@ import { get } from 'svelte/store'
 
 import { getImageDataFromName } from './core/getImageDataFromName'
 
+import { Toast } from 'spaper'
 export class Level {
   constructor (gameFlow) {
     this.name = gameFlow.levelName
@@ -93,6 +94,16 @@ export class Level {
     if (!newComplete[this.name] || newComplete[this.name] === true) {
       newComplete[this.name] = {}
     }
+
+    if(!newComplete[this.name][this.solutionFound]) {
+      Toast.open({
+        message: `Nouveau succès débloqué pour le niveau ${this.name}: ${this.solutionFound}`,
+        type: "warning",
+        duration: 4000,
+        position: "bottom"
+      })
+    }
+
     newComplete[this.name][this.solutionFound] = true
     levelsComplete.set(newComplete)
   }

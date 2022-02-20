@@ -34,14 +34,7 @@
     dispatch("end");
   }
 
-  progress.set(1);
-
-  Toast.open({
-    message: `Fin débloquée`,
-    type: "warning",
-    duration: 2000,
-    position: "bottom"
-  })
+  progress.set(1);  
 
 </script>
 

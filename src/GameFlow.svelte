@@ -5,6 +5,7 @@
   import Dialog from "./Dialog.svelte";
   import Merge from "./Merge.svelte";
   import ImageReveal from"./ImageReveal.svelte";
+  import {Toast} from 'spaper';
 
   let currentLevel = new Level(get(flowScene));
   let solutionHasBeenFound = false
@@ -22,6 +23,15 @@
   }
 
   function callBackNewItem(event) {
+    event.detail.forEach(item => {
+      Toast.open({
+        message: `Nouvel objet débloqué : ${item}`,
+        type: "warning",
+        duration: 2000,
+        position: "bottom"
+      })
+    });
+
     for (let key in event.detail) {
       const mixingItem = event.detail[key];
       if (!solutionHasBeenFound) {
@@ -31,9 +41,6 @@
           get(level).ImageToPrint(isSolution);
           get(level).gameEndWithSolution(isSolution);
           advance();
-          // setTimeout(() => {
-          //   advance()
-          // }, 2000);
         }
       }   
     }

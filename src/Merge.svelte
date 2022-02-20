@@ -40,10 +40,17 @@
       dispatch("newItem", mixingResult);
 
       // Hidden success
-      debugger;
       if (mixingResult[0] === "PKC") {
         const newHiddenAchievement = { ...get(hiddenAchievement) };
+
         newHiddenAchievement["brokenSword"] = true;
+        Toast.open({
+          message: "Nouveau succès débloqué : brokenSword",
+          type: "warning",
+          duration: 2000,
+          position: "bottom"
+        })
+
         hiddenAchievement.set(newHiddenAchievement);
         saveProgression();
       }
