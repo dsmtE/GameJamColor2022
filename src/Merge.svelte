@@ -6,6 +6,7 @@
   import { level } from "./stores.js";
   import ImageComponent from "./Image.svelte";
   import imagesData from "./data/img_data";
+  import shuffleArray from "./core/shuffleArray"
 
   const dispatch = createEventDispatcher();
 
@@ -131,6 +132,7 @@
   <div id="MixingBowl" class="dropzone" />
 
   <b>Inventaire:</b>
+  {shuffleArray(inventory)}
   {#each inventory as item, itemIndex (item)}
     <div id="item" class="drag-drop object">  
       <img src={"./img/" + getImageDataFromName(item).src + ".png"} alt={getImageDataFromName(item).name} />
