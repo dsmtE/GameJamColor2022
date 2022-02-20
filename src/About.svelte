@@ -3,7 +3,7 @@
   import shuffleArray from "./core/shuffleArray";
   let about = [
   { name : 'Jules', website : 'https://julesfouchy.github.io/home/' },
-  { name : 'Anaïs', website : '#' },
+  { name : 'Anaïs', website : 'https://www.instagram.com/talia_kah' },
   { name : 'Clémence', website : 'https://www.instagram.com/poulpillow/' },
   { name : 'Lilou', website : 'https://www.instagram.com/miss_bidule/' },
   { name : 'Amalia', website : '#' },
