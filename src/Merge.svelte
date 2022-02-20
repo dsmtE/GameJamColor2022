@@ -5,13 +5,10 @@
   import { createEventDispatcher } from "svelte";
   import { get } from "svelte/store";
   import { level } from "./stores.js";
-  import { Button } from "spaper"
-  import ImageComponent from "./Image.svelte";
   import shuffleArray from "./core/shuffleArray"
 
   const dispatch = createEventDispatcher();
 
-  console.log(getImageDataFromName)
   let currentLevel = get(level);
 
   let inventory = [...currentLevel.startingItems];
@@ -63,8 +60,8 @@
   interact(".dropzone").dropzone({
     // only accept elements matching this CSS selector
     accept: "#item",
-    // Require a 75% element overlap for a drop to be possible
-    overlap: 0.2,
+    // Require a 30% element overlap for a drop to be possible
+    overlap: 0.3,
 
     // listen for drop related events:
 
@@ -129,7 +126,7 @@
 
   <b>Inventaire:</b><br>
   {#each inventory as item, itemIndex (item)}
-    <div id="item" class="drag-drop object">  
+    <div id="item" class="drag-drop object"> 
       <img src={"./img/" + getImageDataFromName(item).src + ".png"} alt={getImageDataFromName(item).name} />
       <p>{getImageDataFromName(item).name}</p>
     </div>

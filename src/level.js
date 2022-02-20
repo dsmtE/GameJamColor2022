@@ -49,9 +49,8 @@ export class Level {
     const possibleSolutions = {
       easy: 'easySolution',
       expert: 'expertSolution',
-      fail: 'fail'
+      fail: 'failSolution'
     }
-    console.log(getImageDataFromName)
     this.flow.push(new Image({
       type: "image",
       src: getImageDataFromName(this.levelData[possibleSolutions[solution]]).src,

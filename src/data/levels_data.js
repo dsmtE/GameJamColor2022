@@ -209,7 +209,7 @@ export default {
       { input: ['Cartable', 'Tôle'], output: ['Malette'] },
       { input: ['Papier', 'Crayons de couleur'], output: ['Papier vert'] },
       {
-        input: ['Papier Vert', 'Ciseaux'],
+        input: ['Papier vert', 'Ciseaux'],
         output: ["Faux billets"]
       },
       {
@@ -247,7 +247,7 @@ export default {
       "Rien n'échappe à mon super satellite 3000 ! Tricher sur mon voisin n'a jamais été aussi facile !"
     ],
     dialogsFail: [
-      "Mince j'avais oublié que mon professeur était un ancien mafieu !",
+      "Mince j'avais oublié que mon professeur était un ancien mafieux !",
       'Les faux billets ne lui ont pas vraiment plu et je crois que ses anciens amis veulent ma peau 😳'
     ]
   }
