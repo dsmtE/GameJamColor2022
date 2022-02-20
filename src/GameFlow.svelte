@@ -6,6 +6,7 @@
   import Merge from "./Merge.svelte";
 
   let currentLevel = new Level(get(flowScene));
+  let solutionHasBeenFound = false
   level.set(currentLevel);
 
   function advance() {
@@ -22,11 +23,14 @@
   function callBackNewItem(event) {
     for (let key in event.detail) {
       const mixingItem = event.detail[key];
-      const isSolution = get(level).isSolutionItem(mixingItem);
-      if (isSolution) {
-        get(level).gameEndWithSolution(isSolution);
-        advance();
-      }
+      if (!solutionHasBeenFound) {
+        const isSolution = get(level).isSolutionItem(mixingItem);
+        if (isSolution) {
+            solutionHasBeenFound = true
+            get(level).gameEndWithSolution(isSolution);
+            advance();
+        }
+      }   
     }
   }
 </script>
