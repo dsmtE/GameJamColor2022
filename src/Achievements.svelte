@@ -1,5 +1,5 @@
 <script>
-  import ImageComponent from "./Image.svelte";
+  import ImageComponent from "./ImageReveal.svelte";
   import { get } from "svelte/store";
   import { levelsComplete, hiddenAchievement } from "./stores.js";
   import levelsData from "./data/levels_data.js";
