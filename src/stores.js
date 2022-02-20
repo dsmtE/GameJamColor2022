@@ -1,12 +1,15 @@
 import { writable } from 'svelte/store'
 
-export const gameName = writable('<VariableNomDuJeu>')
+export const gameName = writable('La Cour des Grands')
 export const flowScene = writable()
 export const levelsComplete = writable()
 export const level = writable()
 export const introText = writable(`
-<p> Bienvenue dans notre super jeu ! </p>
+<p> Bienvenue dans la cour des grands ! </p>
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti iure totam nam debitis aliquid impedit, et quas omnis aspernatur optio molestias ex laborum quia. Ducimus culpa tempore, veritatis officia delectus dolore dignissimos reprehenderit vero, sunt odit placeat est non molestiae ipsa nam velit in iusto hic quasi similique facere. Maxime?
+    Dans ce jeu de craft, combine les objets pour en débloquer de nouveaux et résoudre tes problèmes de manière ingénieuse et parfois inattendue.
+</p>
+<p>
+    Laisse libre cours à ton imagination, il y a plusieurs solutions pour chaque niveau !
 </p>
 `)
