@@ -7,11 +7,15 @@ html, body {
 }
 
 body {
-	color: #333;
 	margin: 0;
 	padding: 8px;
 	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	height : 100%;
+	background-image: url(img/fond.png);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Neucha', sans-serif !important;
 }
 
 h3 {
@@ -19,16 +23,11 @@ h3 {
 }
 
 a {
-	color: rgb(0,100,200);
 	text-decoration: none;
 }
 
 a:hover {
 	text-decoration: none;
-}
-
-a:visited {
-	color: rgb(0,80,160);
 }
 
 label {
@@ -42,12 +41,12 @@ input, button, select, textarea {
 	padding: 0.4em;
 	margin: 0 0 0.5em 0;
 	box-sizing: border-box;
-	border: 1px solid #ccc;
+	border: 1px solid rgb(0, 0, 0);
 	border-radius: 2px;
 }
 
 input:disabled {
-	color: #ccc;
+	color: rgb(0, 0, 0);
 }
 
 button {
@@ -69,6 +68,26 @@ button:not(:disabled):active {
 }
 
 ul li a {
-	text-decoration: none;
 	color: black;
+	background-image: none;
+}
+
+ul li a:hover {
+	color: #fe8b01;
+}
+
+.logo {
+	margin: auto;
+	margin-bottom: 20px;
+	border: none;
+	height: 150px;
+}
+
+.footer {
+	display: flex;
+	flex-direction: row;
+}
+
+main {
+	height : 100%;
 }
