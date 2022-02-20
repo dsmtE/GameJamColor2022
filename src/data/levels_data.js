@@ -25,10 +25,14 @@ export default {
       },
       { input: ['Pétards', 'Terre'], output: ['Poudre de perlinpinpin'] },
       {
+        input: ['Tôle', 'Ciseaux'],
+        output: ['Métal en dent de scie']
+      },
+      {
         input: ['Métal en dent de scie', 'Moteur'],
         output: ['Tronçonneuse sans huile']
       },
-      { input: ['Tronçonneuse sans huile', 'Huile'], output: ['Tronçonneuse'] },
+      { input: ['Tronçonneuse sans huile', 'Huile de tournesol'], output: ['Tronçonneuse'] },
       { input: ['Taille-crayon', 'Briquet'], output: ['Tôle'] },
       { input: ['Tôle', 'Briquet'], output: ['Moteur'] },
       { input: ['Tournesol'], output: ['Huile de tournesol'] }
@@ -79,7 +83,7 @@ export default {
       }
     ],
     easySolution: 'Clé',
-    expertSolution: 'Masque de voleur',
+    expertSolution: 'Kit de crochetage',
     failSolution: 'Bélier',
     dialogsBegin: [
       "Et si j'allais jouer à Dofus ? Le CDI est fermé à cette heure là mais ce n'est pas un problème pour moi !",
