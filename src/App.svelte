@@ -1,8 +1,6 @@
 <script>
   import "papercss/dist/paper.min.css";
 
-  import { get } from "svelte/store";
-
   import { flowScene } from "./stores";
   import { loadProgression } from "./save";
   import { Home } from "./scenes";
@@ -19,9 +17,6 @@
   flowScene.set(new Home());
   loadProgression();
 
-  get(flowScene).transitionToHome();
-  get(flowScene).transitionToLevelSelection();
-  get(flowScene).transitionToGame("Ballon perché");
 </script>
 
 <main id="main">
