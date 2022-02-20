@@ -1,26 +1,21 @@
 <script>
   import { ComputeMixing } from "./core/recipesUtils";
+  import {getImageDataFromName} from "./core/getImageDataFromName";
   import interact from "interactjs";
   import { createEventDispatcher } from "svelte";
   import { get } from "svelte/store";
   import { level } from "./stores.js";
   import { Button } from "spaper"
   import ImageComponent from "./Image.svelte";
-  import imagesData from "./data/img_data";
   import shuffleArray from "./core/shuffleArray"
 
   const dispatch = createEventDispatcher();
 
+  console.log(getImageDataFromName)
   let currentLevel = get(level);
 
   let inventory = [...currentLevel.startingItems];
   let mixingBowl = [];
-
-  function getImageDataFromName(name) {
-    const data = imagesData[name] || { src: "" };
-    const src = data["src"];
-    return { name, src };
-  }
 
   function resetMove() {
     Array.from(document.getElementsByClassName("drag-drop"))
@@ -123,7 +118,6 @@
     // dragMoveListener from the dragging demo above
     listeners: { move: dragMoveListener },
   });
-  shuffleArray(inventory)
 </script>
 
 <h1>{currentLevel.name}</h1>
@@ -133,6 +127,7 @@
   <div id="MixingBowl" class="dropzone" />
 
   <b>Inventaire:</b><br>
+  {shuffleArray(inventory)}
   {#each inventory as item, itemIndex (item)}
     <div id="item" class="drag-drop object">  
       <img src={"./img/" + getImageDataFromName(item).src + ".png"} alt={getImageDataFromName(item).name} />

@@ -1,6 +1,7 @@
 <script>
   import objectsData from "./data/img_data";
   import Img from "./Image.svelte";
+
 </script>
 
 <main>
