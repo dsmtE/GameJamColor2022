@@ -27,7 +27,4 @@
         {/if}
     {/each}
   </div>
-  <div class="reset">
-    <button on:click={reset}>DEBUG: Reset progression</button>
-  </div>
 </div>
