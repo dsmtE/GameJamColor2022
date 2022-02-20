@@ -1,11 +1,11 @@
 <script>
   import { ComputeMixing } from "./core/recipesUtils";
-  import {getImageDataFromName} from "./core/getImageDataFromName";
+  import { getImageDataFromName } from "./core/getImageDataFromName";
   import interact from "interactjs";
   import { createEventDispatcher } from "svelte";
   import { get } from "svelte/store";
   import { level } from "./stores.js";
-  import shuffleArray from "./core/shuffleArray"
+  import shuffleArray from "./core/shuffleArray";
 
   const dispatch = createEventDispatcher();
 
@@ -15,17 +15,17 @@
   let mixingBowl = [];
 
   function resetMove() {
-    Array.from(document.getElementsByClassName("drag-drop"))
-         .forEach((element) =>
-    {
-      element.style.transform = "translate(0px, 0px)";
-      element.setAttribute("data-x", "0");
-      element.setAttribute("data-y", "0");
-      if (element.classList.contains("can-drop")) {
-        // remove the drop feedback style
-        element.classList.remove("can-drop");
+    Array.from(document.getElementsByClassName("drag-drop")).forEach(
+      (element) => {
+        element.style.transform = "translate(0px, 0px)";
+        element.setAttribute("data-x", "0");
+        element.setAttribute("data-y", "0");
+        if (element.classList.contains("can-drop")) {
+          // remove the drop feedback style
+          element.classList.remove("can-drop");
+        }
       }
-    });
+    );
     mixingBowl = [];
   }
 
@@ -115,34 +115,41 @@
     // dragMoveListener from the dragging demo above
     listeners: { move: dragMoveListener },
   });
-  shuffleArray(inventory)
+  shuffleArray(inventory);
 </script>
 
 <h1>{currentLevel.name}</h1>
+
+<div class="objective">
+  <p><b>Objectif:</b> {currentLevel.objective}</p>
+</div>
 
 <div>
   <b>Marmite :</b>
   <div id="MixingBowl" class="dropzone" />
 
-  <b>Inventaire:</b><br>
+  <b>Inventaire:</b><br />
   {#each inventory as item, itemIndex (item)}
-    <div id="item" class="drag-drop object"> 
-      <img src={"./img/" + getImageDataFromName(item).src + ".png"} alt={getImageDataFromName(item).name} />
+    <div id="item" class="drag-drop object">
+      <img
+        src={"./img/" + getImageDataFromName(item).src + ".png"}
+        alt={getImageDataFromName(item).name}
+      />
       <p>{getImageDataFromName(item).name}</p>
     </div>
   {/each}
 </div>
 
 <style>
-  .object { 
+  .object {
     width: 120px;
   }
   img {
     height: 120px;
     background-color: #ffffffbb;
-    top:0px;
+    top: 0px;
   }
-   #MixingBowl {
+  #MixingBowl {
     height: 140px;
   }
 

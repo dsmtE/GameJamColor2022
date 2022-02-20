@@ -25,6 +25,8 @@ export class Level {
     this.startingItems = this.levelData['startingItems'] || []
     this.recipes = this.levelData['recipes'] || []
 
+    this.objective = this.levelData['objective'] || ''
+
     this.flow = []
     this.flow.push(
       new Dialog({ type: 'dialog', content: this.levelData['dialogsBegin'] })

@@ -32,7 +32,10 @@ export default {
         input: ['Métal en dent de scie', 'Moteur'],
         output: ['Tronçonneuse sans huile']
       },
-      { input: ['Tronçonneuse sans huile', 'Huile de tournesol'], output: ['Tronçonneuse'] },
+      {
+        input: ['Tronçonneuse sans huile', 'Huile de tournesol'],
+        output: ['Tronçonneuse']
+      },
       { input: ['Taille-crayon', 'Briquet'], output: ['Tôle'] },
       { input: ['Tôle', 'Briquet'], output: ['Moteur'] },
       { input: ['Tournesol'], output: ['Huile de tournesol'] }
@@ -54,7 +57,8 @@ export default {
     dialogsFail: [
       "<i>L'arbre tombe sur votre petit crâne.</i>",
       "Oups, je comprends maintenant pourquoi on ne m'a jamais laissé me servir de la tronçonneuse à la maison 😳"
-    ]
+    ],
+    objective: "Récuperer le ballon coincé dans l'arbre."
   },
   'Infiltration au CDI': {
     name: 'Infiltration au CDI',
@@ -97,7 +101,8 @@ export default {
       'Bêêêêêêêh',
       'Oww, le bélier était en fait une chèvre 🐐',
       "C'est mignon mais ce n'est pas avec ça qu'on va ouvrir la porte ! Dommage, je suppose que jouer avec la chèvre c'est bien aussi."
-    ]
+    ],
+    objective: 'Ouvrir la porte du CDI.'
   },
   'Révolte contre le caïd': {
     name: 'Révolte contre le caïd',
@@ -134,7 +139,8 @@ export default {
       '<i>KABOOM 💥💥💥</i>',
       'Aouch !',
       '<i>Le pétard vous explose à la figure, il fallait souffler, pas fumer le pétard voyons !</i>'
-    ]
+    ],
+    objective: "Se dépatouiller de l'emprise de Pierre-Siméon."
   },
   'Un fâcheux incident': {
     name: 'Un fâcheux incident',
@@ -184,7 +190,8 @@ export default {
     dialogsFail: [
       'Arff, mes talents de dessin ne les ont pas convaincu, je me suis pris un sacré savon 😢🧼',
       'Pourtant mes bonhommes bâton étaient magnifiques !'
-    ]
+    ],
+    objective: 'Ne pas se faire gronder à cause de la fenêtre cassée.'
   },
   'Le contrôle': {
     name: 'Le contrôle',
@@ -210,26 +217,18 @@ export default {
       { input: ['Papier', 'Crayons de couleur'], output: ['Papier vert'] },
       {
         input: ['Papier vert', 'Ciseaux'],
-        output: ["Faux billets"]
+        output: ['Faux billets']
       },
       {
         input: ['Papier', 'Ciseaux'],
-        output: [
-          "Papier en forme de billets"
-        ]
+        output: ['Papier en forme de billets']
       },
       {
-        input: [
-          "Papier en forme de billets",
-          'Crayons de couleur'
-        ],
-        output: ["Faux billets"]
+        input: ['Papier en forme de billets', 'Crayons de couleur'],
+        output: ['Faux billets']
       },
       {
-        input: [
-          'Malette',
-          "Faux billets"
-        ],
+        input: ['Malette', 'Faux billets'],
         output: ['Malette de billets']
       }
     ],
@@ -249,6 +248,7 @@ export default {
     dialogsFail: [
       "Mince j'avais oublié que mon professeur était un ancien mafieux !",
       'Les faux billets ne lui ont pas vraiment plu et je crois que ses anciens amis veulent ma peau 😳'
-    ]
+    ],
+    objective: 'Réussir le contrôle.'
   }
 }
