@@ -123,7 +123,7 @@
   });
 </script>
 
-<h1>niveau {currentLevel.name}</h1>
+<h1>{currentLevel.name}</h1>
 
 <div>
   <b>MixingBowl</b>
