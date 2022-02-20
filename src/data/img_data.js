@@ -14,7 +14,7 @@ export default {
   Terre: { src: 'terre' },
   Tôle: { src: 'tole' },
   Pétards: { src: 'petard' },
-  'Huile de Tournesol': { src: 'huile' },
+  'Huile de tournesol': { src: 'huile' },
   Tronçonneuse: { src: 'troconneuse' },
   'Tronçonneuse sans huile': { src: 'troconneuse_sans_huile' },
   Papier: { src: 'papier' },
@@ -24,5 +24,5 @@ export default {
   Métal: { src: 'metal' },
   Moteur: { src: 'moteur' },
   'Papier vert': { src: 'papier_vert' },
-  'Papier Noir': { src: 'papier_noir' }
+  'Papier noir': { src: 'papier_noir' }
 }
