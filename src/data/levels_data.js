@@ -35,8 +35,9 @@ export default {
       { input: ['Tronçonneuse sans huile', 'Huile de tournesol'], output: ['Tronçonneuse'] },
       { input: ['Taille-crayon', 'Briquet'], output: ['Tôle'] },
       { input: ['Tôle', 'Briquet'], output: ['Moteur'] },
-      { input: ['Tournesol'], output: ['Huile de tournesol'] }
-    ],
+            { input: ['Tournesol'], output: ['Huile de tournesol'] },
+            { input: ['Ciseaux', 'Pétards'], output: ['Epée'] },
+            { input: ['Epée', 'Pétards'], output: ['Epée cassée'] }
     easySolution: 'Échelle',
     expertSolution: 'Super-héros',
     failSolution: 'Tronçonneuse',
@@ -118,8 +119,9 @@ export default {
       { input: ['Chemise', 'Ciseaux'], output: ['Boutons', 'Tissu'] },
       { input: ['Agrafeuse', 'Tissu'], output: ['Poupée sans yeux'] },
       { input: ['Poupée sans yeux', 'Boutons'], output: ['Poupée'] },
-      { input: ['Poupée', 'Compas'], output: ['Poupée Vaudou'] }
-    ],
+            { input: ['Poupée', 'Compas'], output: ['Poupée Vaudou'] },
+            { input: ['Ciseaux', 'Pétards'], output: ['Epée'] },
+            { input: ['Epée', 'Pétards'], output: ['Epée cassée'] }
     easySolution: 'Goûter empoisonné',
     expertSolution: 'Poupée Vaudou',
     failSolution: 'Bazooka',
@@ -225,9 +227,9 @@ export default {
         ],
         output: ["Faux billets"]
       },
-      {
-        input: [
-          'Malette',
+            { input: ['Malette', 'Faux billets'], output: ['Malette de billets'] },
+            { input: ['Ciseaux', 'Pétards'], output: ['Epée'] },
+            { input: ['Epée', 'Pétards'], output: ['Epée cassée'] }
           "Faux billets"
         ],
         output: ['Malette de billets']
