@@ -1,56 +1,112 @@
 <script>
-import {getImageDataFromName} from "./core/getImageDataFromName";
+  import { getImageDataFromName } from "./core/getImageDataFromName";
 
-import { get } from "svelte/store";
-import { level } from "./stores.js";
-import levels from './data/levels_data.js'
+  import ImageComponent from "./Image.svelte";
+  import { get } from "svelte/store";
+  import { levelsComplete } from "./stores.js";
+  import levelsData from "./data/levels_data.js";
+  import imagesData from "./data/img_data.js";
 
-let type = 0
-let Solution = "Échelle"
-let test = getImageDataFromName(Solution);
-console.log(levels['Ballon perché']);
-Array.prototype.forEach.call(levels, child => {
-  console.log(child)
-});
+  const allAchievements = {};
+  let allAchievementsCount = 0;
+  let allAchievementsDone = 0;
+  for (let key in levelsData) {
+    allAchievements[key] = {
+      Facile: false,
+      Expert: false,
+      Raté: false,
+    };
+    allAchievementsCount += 3;
+    if (get(levelsComplete)) {
+      const currentLevelComplete = get(levelsComplete)[key] || {};
+      if (
+        currentLevelComplete["easy"] &&
+        currentLevelComplete["easy"] === true
+      ) {
+        allAchievementsDone += 1;
+        const solutionKey = levelsData[key]["easySolution"];
+        const currentImageObjectProp = imagesData[solutionKey];
+        currentImageObjectProp["name"] = solutionKey;
+        allAchievements[key]["Facile"] = {
+          done: true,
+          class: "easy",
+          object: currentImageObjectProp,
+        };
+      }
+      if (
+        currentLevelComplete["expert"] &&
+        currentLevelComplete["expert"] === true
+      ) {
+        allAchievementsDone += 1;
+        const solutionKey = levelsData[key]["expertSolution"];
+        const currentImageObjectProp = imagesData[solutionKey];
+        currentImageObjectProp["name"] = solutionKey;
+        allAchievements[key]["Expert"] = {
+          done: true,
+          class: "expert",
+          object: currentImageObjectProp,
+        };
+      }
+      if (
+        currentLevelComplete["fail"] &&
+        currentLevelComplete["fail"] === true
+      ) {
+        allAchievementsDone += 1;
+        const solutionKey = levelsData[key]["failSolution"];
+        const currentImageObjectProp = imagesData[solutionKey];
+        currentImageObjectProp["name"] = solutionKey;
+        allAchievements[key]["Raté"] = {
+          done: true,
+          class: "fail",
+          object: currentImageObjectProp,
+        };
+      }
+    }
+  }
+  const questionObject = { src: "question", name: "Inconnu" };
 </script>
 
-<h3>15 succés déverrouillés sur 15</h3>
+<h3>{allAchievementsDone} succés déverrouillés sur {allAchievementsCount}</h3>
 
-<div class="container">
-    <div class="inner-container">
-        <div class="red" /><div class="red" /><div class="red" />
+{#each Object.keys(levelsData) as key}
+  <!-- {#if allAchievements[key]["Facile"] || allAchievements[key]["Expert"] || allAchievements[key]["Raté"]} -->
+  <div class="item row">
+    <div class="col col-3 align-middle">
+      <p class="achievement-name">{key}</p>
     </div>
-    <div class="inner-container">
-        <div class="red" /><div class="red" /><div class="red" />
-    </div>
-</div>
-
-<!--{#each inventory as item, itemIndex (item)}
-    <div id="item" class="drag-drop object"> 
-      <img src={"./img/" + getImageDataFromName(item).src + ".png"} alt={getImageDataFromName(item).name} />
-      <p>{getImageDataFromName(item).name}</p>
-    </div>
-{/each}-->
+    {#each Object.keys(allAchievements[key]) as difficulty}
+      {#if allAchievements[key][difficulty]}
+        <div class="col col-3">
+          <div class={"difficulty true " + difficulty}>
+            <p>{difficulty}</p>
+            <ImageComponent
+              object={allAchievements[key][difficulty]["object"]}
+            />
+          </div>
+        </div>
+      {:else}
+        <div class="col col-3">
+          <div class={"difficulty false " + difficulty}>
+            <p>{difficulty}</p>
+            <ImageComponent object={questionObject} />
+          </div>
+        </div>
+      {/if}
+    {/each}
+  </div>
+  <!-- {/if} -->
+{/each}
 
 <style>
+  .achievement-name {
+    font-size: 1.7em;
+  }
 
-.red {
-    background-color : red;
-    height : 100px;
-    width : 100px;
-    margin: 2px;
-}
+  .difficulty {
+    font-size: 1.4em;
+  }
 
-.container {
-    display: flex;
-    flex-direction: column;
-}
-
-.inner-container {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    margin: 20px;
-}
-
+  .difficulty p {
+    text-align: left;
+  }
 </style>
