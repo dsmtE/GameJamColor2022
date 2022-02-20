@@ -126,11 +126,11 @@
 <h1>{currentLevel.name}</h1>
 
 <div>
-  <b>MixingBowl</b>
+  <b>Marmite:</b>
   <button on:click={(e) => resetMove()}> Ranger la table </button>
   <div id="MixingBowl" class="dropzone" />
 
-  <b>Inventory</b>
+  <b>Inventaire:</b>
   {#each inventory as item, itemIndex (item)}
     <div id="item" class="drag-drop object">  
       <img src={"./img/" + getImageDataFromName(item).src + ".png"} alt={getImageDataFromName(item).name} />
