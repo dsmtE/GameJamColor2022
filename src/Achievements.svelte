@@ -62,7 +62,7 @@
     }
   }
   const questionObject = { src: "question", name: "Inconnu" };
-  const brokenSwordObject = { src: "epee_cassee", name: "Épée cassée" };
+  const brokenSwordObject = { src: "epee_cassee", name: "PKC" };
 </script>
 
 <h3>{allAchievementsDone} succés déverrouillés sur {allAchievementsCount}</h3>

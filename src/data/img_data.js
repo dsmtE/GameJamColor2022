@@ -67,5 +67,5 @@ export default {
   'Un fâcheux incident': { src: 'niv4' },
   'Le contrôle': { src: 'niv5' },
   Épée: { src: 'epee' },
-  'Épée cassée': { src: 'epee_cassee' }
+  PKC: { src: 'epee_cassee' }
 }

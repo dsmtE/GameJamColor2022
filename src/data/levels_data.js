@@ -40,7 +40,7 @@ export default {
       { input: ['Tôle', 'Briquet'], output: ['Moteur'] },
       { input: ['Tournesol'], output: ['Huile de tournesol'] },
       { input: ['Ciseaux', 'Pétards'], output: ['Épée'] },
-      { input: ['Épée', 'Pétards'], output: ['Épée cassée'] }
+      { input: ['Épée', 'Pétards'], output: ['PKC'] }
     ],
     easySolution: 'Échelle',
     expertSolution: 'Super-héros',
@@ -127,7 +127,7 @@ export default {
       { input: ['Poupée sans yeux', 'Boutons'], output: ['Poupée'] },
       { input: ['Poupée', 'Compas'], output: ['Poupée Vaudou'] },
       { input: ['Ciseaux', 'Pétards'], output: ['Épée'] },
-      { input: ['Épée', 'Pétards'], output: ['Épée cassée'] }
+      { input: ['Épée', 'Pétards'], output: ['PKC'] }
     ],
     easySolution: 'Goûter empoisonné',
     expertSolution: 'Poupée Vaudou',
@@ -233,7 +233,7 @@ export default {
       },
       { input: ['Malette', 'Faux billets'], output: ['Malette de billets'] },
       { input: ['Ciseaux', 'Pétards'], output: ['Épée'] },
-      { input: ['Épée', 'Pétards'], output: ['Épée cassée'] }
+      { input: ['Épée', 'Pétards'], output: ['PKC'] }
     ],
     easySolution: 'Antisèche',
     expertSolution: 'Satellite espion',

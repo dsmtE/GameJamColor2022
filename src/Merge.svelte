@@ -41,7 +41,7 @@
 
       // Hidden success
       debugger;
-      if (mixingResult[0] === "Épée cassée") {
+      if (mixingResult[0] === "PKC") {
         const newHiddenAchievement = { ...get(hiddenAchievement) };
         newHiddenAchievement["brokenSword"] = true;
         hiddenAchievement.set(newHiddenAchievement);
@@ -159,9 +159,9 @@
     background-color: #ffffffbb;
     top: 0px;
   }
-   #MixingBowl {
+  #MixingBowl {
     height: 400px;
-    width: 540px
+    width: 540px;
   }
 
   .dropzone {
