@@ -4,6 +4,7 @@
   import { createEventDispatcher } from "svelte";
   import { get } from "svelte/store";
   import { level } from "./stores.js";
+  import { Button } from "spaper"
   import ImageComponent from "./Image.svelte";
   import imagesData from "./data/img_data";
 
@@ -126,11 +127,11 @@
 <h1>niveau {currentLevel.name}</h1>
 
 <div>
-  <b>MixingBowl</b>
-  <button on:click={(e) => resetMove()}> Ranger la table </button>
+  <b>MixingBowl</b><br><br>
+  <Button on:click={(e) => resetMove()}> Ranger la table </Button>
   <div id="MixingBowl" class="dropzone" />
 
-  <b>Inventory</b>
+  <b>Inventory</b><br>
   {#each inventory as item, itemIndex (item)}
     <div id="item" class="drag-drop object">  
       <img src={"./img/" + getImageDataFromName(item).src + ".png"} alt={getImageDataFromName(item).name} />
@@ -142,7 +143,6 @@
 <style>
   .object {
     flex-direction: column;
-    float: right;
     width: 120px;
   }
   img {
