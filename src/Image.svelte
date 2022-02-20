@@ -15,5 +15,6 @@
   }
   img {
     height: 50%;
+    background-color: #ffffffbb;
   }
 </style>
