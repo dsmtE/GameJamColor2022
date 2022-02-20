@@ -131,14 +131,14 @@
 <h1>{currentLevel.name}</h1>
 
 <div class="objective">
-  <p><b>Objectif:</b> {currentLevel.objective}</p>
+  <p><b>Objectif :</b> {currentLevel.objective}</p>
 </div>
 
 <div>
   <b>Marmite :</b>
   <div id="MixingBowl" class="dropzone" />
 
-  <b>Inventaire:</b><br />
+  <b>Inventaire :</b><br />
   {#each inventory as item, itemIndex (item)}
     <div id="item" class="drag-drop object">
       <img
