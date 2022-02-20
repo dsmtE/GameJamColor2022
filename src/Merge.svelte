@@ -4,8 +4,9 @@
   import interact from "interactjs";
   import { createEventDispatcher } from "svelte";
   import { get } from "svelte/store";
-  import { level } from "./stores.js";
+  import { level, hiddenAchievement } from "./stores.js";
   import shuffleArray from "./core/shuffleArray";
+  import { saveProgression } from "./save.js";
 
   const dispatch = createEventDispatcher();
 
@@ -37,6 +38,15 @@
       inventory = new Array(...new Set([...inventory, ...mixingResult]));
       resetMove();
       dispatch("newItem", mixingResult);
+
+      // Hidden success
+      debugger;
+      if (mixingResult[0] === "Épée cassée") {
+        const newHiddenAchievement = { ...get(hiddenAchievement) };
+        newHiddenAchievement["brokenSword"] = true;
+        hiddenAchievement.set(newHiddenAchievement);
+        saveProgression();
+      }
     }
   }
 

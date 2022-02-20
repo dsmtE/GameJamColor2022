@@ -13,3 +13,4 @@ export const introText = writable(`
     Laisse libre cours à ton imagination, il y a plusieurs solutions pour chaque niveau !
 </p>
 `)
+export const hiddenAchievement = writable({})

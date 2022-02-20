@@ -1,9 +1,7 @@
 <script>
-  import { getImageDataFromName } from "./core/getImageDataFromName";
-
   import ImageComponent from "./Image.svelte";
   import { get } from "svelte/store";
-  import { levelsComplete } from "./stores.js";
+  import { levelsComplete, hiddenAchievement } from "./stores.js";
   import levelsData from "./data/levels_data.js";
   import imagesData from "./data/img_data.js";
 
@@ -64,12 +62,12 @@
     }
   }
   const questionObject = { src: "question", name: "Inconnu" };
+  const brokenSwordObject = { src: "epee_cassee", name: "Épée cassée" };
 </script>
 
 <h3>{allAchievementsDone} succés déverrouillés sur {allAchievementsCount}</h3>
 
 {#each Object.keys(levelsData) as key}
-  <!-- {#if allAchievements[key]["Facile"] || allAchievements[key]["Expert"] || allAchievements[key]["Raté"]} -->
   <div class="item row">
     <div class="col col-3 align-middle">
       <p class="achievement-name">{key}</p>
@@ -96,6 +94,26 @@
   </div>
   <!-- {/if} -->
 {/each}
+
+<h3>Succès cachés</h3>
+
+<div class="item row">
+  {#if $hiddenAchievement["brokenSword"]}
+    <div class="col col-3 align-middle">
+      <div class="difficulty true">
+        <p>Crafter l'épée légendaire.</p>
+        <ImageComponent object={brokenSwordObject} />
+      </div>
+    </div>
+  {:else}
+    <div class="col col-3 align-middle">
+      <div class="difficulty true">
+        <p>Crafter l'épée légendaire.</p>
+        <ImageComponent object={questionObject} />
+      </div>
+    </div>
+  {/if}
+</div>
 
 <style>
   .achievement-name {
