@@ -101,14 +101,14 @@
   {#if $hiddenAchievement["brokenSword"]}
     <div class="col col-3 align-middle">
       <div class="difficulty true">
-        <p>Crafter l'épée légendaire.</p>
+        <p>Crafter l'épée légendaire</p>
         <ImageComponent object={brokenSwordObject} />
       </div>
     </div>
   {:else}
     <div class="col col-3 align-middle">
       <div class="difficulty true">
-        <p>Crafter l'épée légendaire.</p>
+        <p>Crafter l'épée légendaire</p>
         <ImageComponent object={questionObject} />
       </div>
     </div>
