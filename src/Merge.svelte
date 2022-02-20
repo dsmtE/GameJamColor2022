@@ -143,19 +143,20 @@
 </div>
 
 <style>
-  .object {
-    flex-direction: column;
+  .object { 
     width: 120px;
   }
   img {
     height: 120px;
+    background-color: #ffffffbb;
+    top:0px;
   }
    #MixingBowl {
     height: 140px;
   }
 
   .dropzone {
-    background-color: #cfb41b;
+    background-color: #fe8b01;
     border: dashed 4px transparent;
     border-radius: 4px;
     margin: 10px auto 30px;
@@ -165,11 +166,11 @@
   }
 
   div:global(.drop-active) {
-    border-color: rgb(240, 50, 50);
+    border-color: #fec453;
   }
 
   div:global(.drop-target) {
-    background-color: rgb(157, 196, 223);
+    background-color: #fff79c;
     border-color: #fff;
     border-style: solid;
   }
