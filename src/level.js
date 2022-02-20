@@ -2,6 +2,8 @@ import levels from './data/levels_data'
 import { levelsComplete } from './stores'
 import { get } from 'svelte/store'
 
+import { getImageDataFromName } from "./core/getImageDataFromName"
+
 export class Level {
   constructor (gameFlow) {
     this.name = gameFlow.levelName
@@ -41,6 +43,19 @@ export class Level {
         content: this.levelData[possibleSolutions[solution]]
       })
     )
+  }
+
+  ImageToPrint (solution) {
+    const possibleSolutions = {
+      easy: 'easySolution',
+      expert: 'expertSolution',
+      fail: 'fail'
+    }
+    console.log(getImageDataFromName)
+    this.flow.push(new Image({
+      type: "image",
+      src: getImageDataFromName(this.levelData[possibleSolutions[solution]]).src,
+      name:this.levelData[possibleSolutions[solution]]}))
   }
 
   isSolutionItem (item) {
@@ -89,5 +104,13 @@ class Dialog extends Flow {
 class Game extends Flow {
   constructor (params) {
     super(params)
+  }
+}
+
+class Image extends Flow {
+  constructor (params) {
+    super(params)
+    this.src=params.src
+    this.name=params.name
   }
 }

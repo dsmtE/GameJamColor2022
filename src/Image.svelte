@@ -1,7 +1,6 @@
 <!--  -->
 <script>
   export let object;
-  
 </script>
 
 <main>
@@ -19,9 +18,5 @@
   }
   img {
     height: 120px;
-  }
-  div:global(.drag-drop) img {
-    color: #000;
-    background-color: rgb(238, 68, 229);
   }
 </style>

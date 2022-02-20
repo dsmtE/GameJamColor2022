@@ -3,7 +3,7 @@ export default {
   Ciseaux: { src: 'sizo' },
   'Crayons de couleur': { src: 'crayons' },
   Briquet: { src: 'briquet' },
-  Echelle: { src: 'echelle' },
+  Échelle: { src: 'echelle' },
   Tissu: { src: 'tissues' },
   Colle: { src: 'colle' },
   'Costume de super-héros': { src: 'costume_sh' },

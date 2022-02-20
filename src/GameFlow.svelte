@@ -4,6 +4,7 @@
   import { flowScene, level } from "./stores.js";
   import Dialog from "./Dialog.svelte";
   import Merge from "./Merge.svelte";
+  import ImageComponent from"./Image.svelte";
 
   let currentLevel = new Level(get(flowScene));
   let solutionHasBeenFound = false
@@ -26,9 +27,13 @@
       if (!solutionHasBeenFound) {
         const isSolution = get(level).isSolutionItem(mixingItem);
         if (isSolution) {
-            solutionHasBeenFound = true
-            get(level).gameEndWithSolution(isSolution);
-            advance();
+          solutionHasBeenFound = true
+          get(level).ImageToPrint(isSolution);
+          get(level).gameEndWithSolution(isSolution);
+          advance();
+          setTimeout(() => {
+            advance()
+          }, 2000);
         }
       }   
     }
@@ -39,7 +44,9 @@
   {#if currentLevel.currentFlowType() === "dialog"}
     <Dialog dialog={currentLevel.currentFlow()} on:end={advance} />
   {/if}
-
+  {#if currentLevel.currentFlowType() === "image"}
+    <ImageComponent object={{src: currentLevel.currentFlow().src, name: currentLevel.currentFlow().name}}/>
+  {/if}
   {#if currentLevel.currentFlowType() === "game"}
     <Merge on:newItem={callBackNewItem} />
   {/if}
