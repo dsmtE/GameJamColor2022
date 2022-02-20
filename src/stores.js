@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store'
 
-export const gameName = writable('La Cour des Grands')
+export const gameName = writable('Childchemy')
 export const flowScene = writable()
 export const levelsComplete = writable()
 export const level = writable()
