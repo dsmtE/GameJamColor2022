@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 8px;
+	box-sizing: border-box;
+	height : 100%;
+	background-image: url(img/fond.png);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Neucha', sans-serif !important;
+}
+
+h3 {
+	overflow-wrap: break-word;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+label {
+	display: block;
+}
+
+input, button, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	-webkit-padding: 0.4em 0;
+	padding: 0.4em;
+	margin: 0 0 0.5em 0;
+	box-sizing: border-box;
+	border: 1px solid rgb(0, 0, 0);
+	border-radius: 2px;
+}
+
+input:disabled {
+	color: rgb(0, 0, 0);
+}
+
+button {
+	color: #333;
+	background-color: #f4f4f4;
+	outline: none;
+}
+
+button:disabled {
+	color: #999;
+}
+
+button:not(:disabled):active {
+	background-color: #ddd;
+}
+
+.paper-btn:focus, .button:focus {
+	border-color: black !important;
+}
+
+ul li a {
+	color: black;
+	background-image: none;
+}
+
+ul li a:hover {
+	color: #fe8b01;
+}
+
+.logo {
+	margin: auto;
+	margin-bottom: 20px;
+	border: none;
+	height: 150px;
+}
+
+.footer {
+	display: flex;
+	flex-direction: row;
+}
+
+main {
+	height : 100%;
+}
