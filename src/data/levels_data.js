@@ -204,7 +204,7 @@ export default {
     recipes: [
       { input: ['Stylo', 'Papier', 'Manuel de cours'], output: ['Antisèche'] },
       { input: ['Bouteille', 'Pétards'], output: ['Fusée'] },
-      { input: ['Fusée', 'Téléphone'], output: ['Satélite espion'] },
+      { input: ['Fusée', 'Téléphone'], output: ['Satellite espion'] },
       { input: ['Briquet', 'Taille-crayon'], output: ['Tôle'] },
       { input: ['Cartable', 'Tôle'], output: ['Malette'] },
       { input: ['Papier', 'Crayons de couleur'], output: ['Papier vert'] },
@@ -234,7 +234,7 @@ export default {
       }
     ],
     easySolution: 'Antisèche',
-    expertSolution: 'Satélite espion',
+    expertSolution: 'Satellite espion',
     failSolution: 'Malette de billets',
     dialogsBegin: [
       "Oh non, j'ai complètement oublié de réviser pour mon contrôle !",
