@@ -118,6 +118,7 @@
     // dragMoveListener from the dragging demo above
     listeners: { move: dragMoveListener },
   });
+  shuffleArray(inventory)
 </script>
 
 <h1>{currentLevel.name}</h1>
@@ -127,7 +128,6 @@
   <div id="MixingBowl" class="dropzone" />
 
   <b>Inventaire:</b><br>
-  {shuffleArray(inventory)}
   {#each inventory as item, itemIndex (item)}
     <div id="item" class="drag-drop object">  
       <img src={"./img/" + getImageDataFromName(item).src + ".png"} alt={getImageDataFromName(item).name} />
