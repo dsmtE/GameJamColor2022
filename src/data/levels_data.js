@@ -210,25 +210,25 @@ export default {
       { input: ['Papier', 'Crayons de couleur'], output: ['Papier vert'] },
       {
         input: ['Papier Vert', 'Ciseaux'],
-        output: ["Papiers verts qu'on pourrait confondre avec des billets"]
+        output: ["Faux billets"]
       },
       {
         input: ['Papier', 'Ciseaux'],
         output: [
-          "Papiers qu'on pourrait confondre avec des billets, mais ils sont blancs"
+          "Papier en forme de billets"
         ]
       },
       {
         input: [
-          "Papiers qu'on pourrait confondre avec des billets, mais ils sont blancs",
+          "Papier en forme de billets",
           'Crayons de couleur'
         ],
-        output: ["Papiers verts qu'on pourrait confondre avec des billets"]
+        output: ["Faux billets"]
       },
       {
         input: [
           'Malette',
-          "Papiers verts qu'on pourrait confondre avec des billets"
+          "Faux billets"
         ],
         output: ['Malette de billets']
       }
