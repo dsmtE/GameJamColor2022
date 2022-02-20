@@ -11,7 +11,11 @@
 
     <br/>
   <div>
-    <button on:click={$flowScene.transitionToAchievements()}>Succès</button>
-    <button on:click={$flowScene.transitionToSettings()}>Paramètres</button>
+    <div class="footer">
+      <button on:click={$flowScene.transitionToAchievements()}>Succès</button>
+      <img class="logo" src="../img/logo_pkc.png"
+      alt="logo_team"/>
+      <button on:click={$flowScene.transitionToSettings()}>Paramètres</button>
+    </div>
   </div>
 </div>

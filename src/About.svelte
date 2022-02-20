@@ -7,9 +7,9 @@
   { name : 'Clémence', website : 'https://www.instagram.com/poulpillow/' },
   { name : 'Lilou', website : 'https://www.instagram.com/miss_bidule/' },
   { name : 'Amalia', website : '#' },
-  { name : 'Enguerrand', website : '#' },
-  { name : 'Emma', website : '#' },
-  { name : 'Aurore', website : '#' }
+  { name : 'Enguerrand', website : 'https://www.instagram.com/enguerrand_desmet/' },
+  { name : 'Emma', website : 'https://emmapernin.fr/' },
+  { name : 'Aurore', website : 'https://www.instagram.com/_just_kiel_/' }
     ];
     console.log(about)
   shuffleArray(about)

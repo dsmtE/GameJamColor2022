@@ -7,9 +7,12 @@ export const level = writable()
 export const introText = writable(`
 <p> Bienvenue dans la cour des grands ! </p>
 <p>
-    Dans ce jeu de craft, combine les objets pour en débloquer de nouveaux et résoudre tes problèmes de manière ingénieuse et parfois inattendue.
+    Dans ce jeu dans le style d’un “Little Alchemy”, combine les objets dans la marmite pour en débloquer de nouveaux et résoudre tes problèmes de manière ingénieuse et parfois inattendue !
 </p>
 <p>
-    Laisse libre cours à ton imagination, il y a plusieurs solutions pour chaque niveau !
+    Laisse libre cours à ton imagination !  Chaque niveau comporte 3 fins : une simple, une complexe et une mauvaise fin.
+</p>
+<p>
+    Sauras-tu toutes les débloquer ?
 </p>
 `)

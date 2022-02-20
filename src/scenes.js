@@ -32,6 +32,7 @@ export class Home extends FlowScene {
     super('home')
   }
   transitionToLevelSelection () {
+    document.body.style.backgroundImage = 'url(img/fond.png)';
     flowScene.set(new LevelSelection())
   }
   transitionToSettings () {
@@ -52,6 +53,7 @@ export class About extends FlowScene {
     super('about')
   }
   transitionToLevelSelection () {
+    document.body.style.backgroundImage = 'url(img/fond.png)';
     return
   }
   transitionToSettings () {
@@ -75,6 +77,7 @@ export class LevelSelection extends FlowScene {
     document.body.style.backgroundImage = 'url(img/fond.png)';
   }
   transitionToLevelSelection () {
+    document.body.style.backgroundImage = 'url(img/fond.png)';
     return
   }
   transitionToGame (level) {
@@ -129,6 +132,7 @@ export class GameFlow extends FlowScene {
       get(level).end()
       saveProgression()
     }
+    document.body.style.backgroundImage = 'url(img/fond.png)';
     flowScene.set(new LevelSelection())
   }
 }

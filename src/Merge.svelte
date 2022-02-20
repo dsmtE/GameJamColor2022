@@ -143,11 +143,14 @@
     top:0px;
   }
    #MixingBowl {
-    height: 140px;
+    height: 400px;
+    width: 540px
   }
 
   .dropzone {
-    background-color: #fe8b01;
+    background-image: url("../img/marmite.png");
+    background-size: contain;
+    background-repeat: no-repeat;
     border: dashed 4px transparent;
     border-radius: 4px;
     margin: 10px auto 30px;
