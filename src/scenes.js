@@ -1,6 +1,7 @@
 import { get } from 'svelte/store'
 import { saveProgression } from './save.js'
 import { flowScene, level } from './stores.js'
+import {getImageDataFromName} from "./core/getImageDataFromName";
 
 class FlowScene {
   constructor (name) {
@@ -22,6 +23,7 @@ class FlowScene {
     throw Error('Not implemented')
   }
   transitionToAbout() {
+    document.body.style.backgroundImage = 'url(img/fond.png)';
     flowScene.set(new About())
   }
 }
@@ -33,12 +35,14 @@ export class Home extends FlowScene {
     flowScene.set(new LevelSelection())
   }
   transitionToSettings () {
+    document.body.style.backgroundImage = 'url(img/fond.png)';
     flowScene.set(new Settings())
   }
   transitionToAchievements () {
     flowScene.set(new Achievements())
   }
   transitionToHome () {
+    document.body.style.backgroundImage = 'url(img/fond.png)';
     return
   }
 }
@@ -57,6 +61,7 @@ export class About extends FlowScene {
     return
   }
   transitionToHome () {
+    document.body.style.backgroundImage = 'url(img/fond.png)';
     flowScene.set(new Home())
   }
 }
@@ -67,12 +72,15 @@ export class LevelSelection extends FlowScene {
   }
   transitionToHome () {
     flowScene.set(new Home())
+    document.body.style.backgroundImage = 'url(img/fond.png)';
   }
   transitionToLevelSelection () {
     return
   }
   transitionToGame (level) {
+    let img = getImageDataFromName(level).src;
     console.log('Transition to level ' + level)
+    document.body.style.backgroundImage = 'url(img/' + img + '.png)';
     flowScene.set(new GameFlow(level))
   }
 }
@@ -82,6 +90,7 @@ export class Settings extends FlowScene {
     super('settings')
   }
   transitionToHome () {
+    document.body.style.backgroundImage = 'url(img/fond.png)';
     flowScene.set(new Home())
   }
   transitionToSettings () {
@@ -94,6 +103,7 @@ export class Achievements extends FlowScene {
     super('achievements')
   }
   transitionToHome () {
+    document.body.style.backgroundImage = 'url(img/fond.png)';
     flowScene.set(new Home())
   }
   transitionToAchievements () {
@@ -108,6 +118,7 @@ export class GameFlow extends FlowScene {
   }
   transitionToHome () {
     flowScene.set(new Home())
+    document.body.style.backgroundImage = 'url(img/fond.png)';
     console.log('WE NEED TO SAVE HERE !!!')
   }
   transitionToGame () {

@@ -10,6 +10,8 @@ body {
 	margin: 0;
 	padding: 8px;
 	box-sizing: border-box;
+
+	background-image: url(img/fond.png);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -63,4 +65,13 @@ button:not(:disabled):active {
 
 .paper-btn:focus, .button:focus {
 	border-color: black !important;
+}
+
+ul li a {
+	color: black;
+	background-image: none;
+}
+
+ul li a:hover {
+	color: #fe8b01;
 }

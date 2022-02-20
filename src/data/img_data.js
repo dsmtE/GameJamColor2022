@@ -60,4 +60,10 @@ export default {
   'Malette de billets': { src: 'malette_argent' },
   'Manuel de cours': { src: 'manuel_cours' },
   'Satellite espion': { src: 'satellite' },
+  'Super-héros': { src: 'super_heros' },
+  'Ballon perché': { src: 'niv1' },
+  'Infiltration au CDI': { src: 'niv2' },
+  'Révolte contre le caïd': { src: 'niv3' },
+  'Un fâcheux incident': { src: 'niv4' },
+  'Le contrôle': { src: 'niv5' }
 }
