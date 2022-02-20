@@ -38,7 +38,9 @@ export default {
       },
       { input: ['Taille-crayon', 'Briquet'], output: ['Tôle'] },
       { input: ['Tôle', 'Briquet'], output: ['Moteur'] },
-      { input: ['Tournesol'], output: ['Huile de tournesol'] }
+      { input: ['Tournesol'], output: ['Huile de tournesol'] },
+      { input: ['Ciseaux', 'Pétards'], output: ['Epée'] },
+      { input: ['Epée', 'Pétards'], output: ['Epée cassée'] }
     ],
     easySolution: 'Échelle',
     expertSolution: 'Super-héros',
@@ -123,7 +125,9 @@ export default {
       { input: ['Chemise', 'Ciseaux'], output: ['Boutons', 'Tissu'] },
       { input: ['Agrafeuse', 'Tissu'], output: ['Poupée sans yeux'] },
       { input: ['Poupée sans yeux', 'Boutons'], output: ['Poupée'] },
-      { input: ['Poupée', 'Compas'], output: ['Poupée Vaudou'] }
+      { input: ['Poupée', 'Compas'], output: ['Poupée Vaudou'] },
+      { input: ['Ciseaux', 'Pétards'], output: ['Epée'] },
+      { input: ['Epée', 'Pétards'], output: ['Epée cassée'] }
     ],
     easySolution: 'Goûter empoisonné',
     expertSolution: 'Poupée Vaudou',
@@ -227,10 +231,9 @@ export default {
         input: ['Papier en forme de billets', 'Crayons de couleur'],
         output: ['Faux billets']
       },
-      {
-        input: ['Malette', 'Faux billets'],
-        output: ['Malette de billets']
-      }
+      { input: ['Malette', 'Faux billets'], output: ['Malette de billets'] },
+      { input: ['Ciseaux', 'Pétards'], output: ['Epée'] },
+      { input: ['Epée', 'Pétards'], output: ['Epée cassée'] }
     ],
     easySolution: 'Antisèche',
     expertSolution: 'Satellite espion',

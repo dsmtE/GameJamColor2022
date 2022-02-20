@@ -66,4 +66,6 @@ export default {
   'Révolte contre le caïd': { src: 'niv3' },
   'Un fâcheux incident': { src: 'niv4' },
   'Le contrôle': { src: 'niv5' }
+    'Epée': { src: 'epee' },
+    'Epée cassée': { src: 'epee_cassee' }
 }
