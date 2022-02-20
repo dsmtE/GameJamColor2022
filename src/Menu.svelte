@@ -5,14 +5,11 @@
 
 <Navbar class="margin-bottom">
   <h3 slot="brand">
-    <a href="#">{$gameName}</a>
+    <span class="home-button" on:click={$flowScene.transitionToHome()}>{$gameName}</span>
   </h3>
   <ul class="inline">
     <li>
-      <Button size="small" block="true" class="inline">About Us</Button>
-    </li>
-    <li>
-      <Button size="small" block="true" on:click={$flowScene.transitionToHome()}>Home</Button>
+      <Button size="small" block="true" class="inline">À propos</Button>
     </li>
     <li>
       <Button
@@ -22,3 +19,15 @@
     </li>
   </ul>
 </Navbar>
+
+<style>
+    .home-button {
+        border-bottom: 5px solid;
+        border-bottom-left-radius: 15px 3px;
+        border-bottom-right-radius: 15px 5px;
+    }
+    .home-button:hover {
+        cursor: pointer;
+    }
+  </style>
+  

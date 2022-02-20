@@ -27,4 +27,4 @@
   </div>
 {/each}
 
-<Button on:click={next}>Next</Button>
+<Button on:click={next}>Suivant</Button>

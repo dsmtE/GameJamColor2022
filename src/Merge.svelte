@@ -7,6 +7,7 @@
   import { Button } from "spaper"
   import ImageComponent from "./Image.svelte";
   import imagesData from "./data/img_data";
+  import shuffleArray from "./core/shuffleArray"
 
   const dispatch = createEventDispatcher();
 
@@ -124,14 +125,15 @@
   });
 </script>
 
-<h1>niveau {currentLevel.name}</h1>
+<h1>{currentLevel.name}</h1>
 
 <div>
-  <b>MixingBowl</b><br><br>
+  <b>Marmite :</b>
   <Button on:click={(e) => resetMove()}> Ranger la table </Button>
   <div id="MixingBowl" class="dropzone" />
 
-  <b>Inventory</b><br>
+  <b>Inventaire:</b><br>
+  {shuffleArray(inventory)}
   {#each inventory as item, itemIndex (item)}
     <div id="item" class="drag-drop object">  
       <img src={"./img/" + getImageDataFromName(item).src + ".png"} alt={getImageDataFromName(item).name} />

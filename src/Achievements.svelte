@@ -1,1 +1,1 @@
-<h1>Mdr, go finir le jeu</h1>
+<h1>Mdr, go finir le jeu.</h1>
