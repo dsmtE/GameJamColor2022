@@ -4,7 +4,7 @@
   import { flowScene, level } from "./stores.js";
   import Dialog from "./Dialog.svelte";
   import Merge from "./Merge.svelte";
-  import ImageComponent from"./Image.svelte";
+  import ImageReveal from"./ImageReveal.svelte";
 
   let currentLevel = new Level(get(flowScene));
   let solutionHasBeenFound = false
@@ -31,23 +31,22 @@
           get(level).ImageToPrint(isSolution);
           get(level).gameEndWithSolution(isSolution);
           advance();
-          setTimeout(() => {
-            advance()
-          }, 2000);
+          // setTimeout(() => {
+          //   advance()
+          // }, 2000);
         }
       }   
     }
   }
 </script>
 
-<main>
-  {#if currentLevel.currentFlowType() === "dialog"}
-    <Dialog dialog={currentLevel.currentFlow()} on:end={advance} />
-  {/if}
-  {#if currentLevel.currentFlowType() === "image"}
-    <ImageComponent object={{src: currentLevel.currentFlow().src, name: currentLevel.currentFlow().name}}/>
-  {/if}
-  {#if currentLevel.currentFlowType() === "game"}
-    <Merge on:newItem={callBackNewItem} />
-  {/if}
-</main>
+{#if currentLevel.currentFlowType() === "dialog"}
+  <Dialog dialog={currentLevel.currentFlow()} on:end={advance} />
+{/if}
+{#if currentLevel.currentFlowType() === "image"}
+  <ImageReveal imgObject={{src: currentLevel.currentFlow().src, name: currentLevel.currentFlow().name}} on:end={advance}/>
+{/if}
+{#if currentLevel.currentFlowType() === "game"}
+  <Merge on:newItem={callBackNewItem} />
+{/if}
+

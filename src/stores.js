@@ -16,3 +16,4 @@ export const introText = writable(`
     Sauras-tu toutes les débloquer ?
 </p>
 `)
+export const hiddenAchievement = writable({})

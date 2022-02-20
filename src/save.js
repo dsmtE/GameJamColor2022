@@ -1,13 +1,15 @@
 import { get } from 'svelte/store'
-import { levelsComplete } from './stores'
+import { levelsComplete, hiddenAchievement } from './stores'
 
 function makeProgression (reset = false) {
   const progression = {
-    levelsComplete: {}
+    levelsComplete: {},
+    hiddenAchievement: {}
   }
 
   if (!reset) {
     progression['levelsComplete'] = get(levelsComplete)
+    progression['hiddenAchievement'] = get(hiddenAchievement)
   }
 
   return JSON.stringify(progression)
@@ -26,4 +28,7 @@ export function loadProgression () {
 
   if (progression['levelsComplete'])
     levelsComplete.set(progression['levelsComplete'])
+
+  if (progression['hiddenAchievement'])
+    hiddenAchievement.set(progression['hiddenAchievement'])
 }

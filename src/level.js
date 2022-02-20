@@ -2,7 +2,7 @@ import levels from './data/levels_data'
 import { levelsComplete } from './stores'
 import { get } from 'svelte/store'
 
-import { getImageDataFromName } from "./core/getImageDataFromName"
+import { getImageDataFromName } from './core/getImageDataFromName'
 
 export class Level {
   constructor (gameFlow) {
@@ -11,6 +11,7 @@ export class Level {
     this.advancement = 0
     this.complete = false
     this.levelData = undefined
+    this.solutionFound = undefined
     this.load()
   }
 
@@ -23,6 +24,8 @@ export class Level {
 
     this.startingItems = this.levelData['startingItems'] || []
     this.recipes = this.levelData['recipes'] || []
+
+    this.objective = this.levelData['objective'] || ''
 
     this.flow = []
     this.flow.push(
@@ -43,6 +46,7 @@ export class Level {
         content: this.levelData[possibleSolutions[solution]]
       })
     )
+    this.solutionFound = solution
   }
 
   ImageToPrint (solution) {
@@ -51,10 +55,14 @@ export class Level {
       expert: 'expertSolution',
       fail: 'failSolution'
     }
-    this.flow.push(new Image({
-      type: "image",
-      src: getImageDataFromName(this.levelData[possibleSolutions[solution]]).src,
-      name:this.levelData[possibleSolutions[solution]]}))
+    this.flow.push(
+      new Image({
+        type: 'image',
+        src: getImageDataFromName(this.levelData[possibleSolutions[solution]])
+          .src,
+        name: this.levelData[possibleSolutions[solution]]
+      })
+    )
   }
 
   isSolutionItem (item) {
@@ -82,7 +90,10 @@ export class Level {
 
   end () {
     const newComplete = { ...get(levelsComplete) }
-    newComplete[this.name] = true
+    if (!newComplete[this.name] || newComplete[this.name] === true) {
+      newComplete[this.name] = {}
+    }
+    newComplete[this.name][this.solutionFound] = true
     levelsComplete.set(newComplete)
   }
 }
@@ -109,7 +120,7 @@ class Game extends Flow {
 class Image extends Flow {
   constructor (params) {
     super(params)
-    this.src=params.src
-    this.name=params.name
+    this.src = params.src
+    this.name = params.name
   }
 }

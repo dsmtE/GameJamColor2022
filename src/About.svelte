@@ -1,6 +1,6 @@
 <script>
-  import { Article } from "spaper"
-  import shuffleArray from "./core/shuffleArray"
+  import { Article } from "spaper";
+  import shuffleArray from "./core/shuffleArray";
   let about = [
   { name : 'Jules', website : 'https://julesfouchy.github.io/home/' },
   { name : 'Anaïs', website : '#' },
@@ -16,19 +16,19 @@
 </script>
 
 <div class="main">
-    <Article title={"Les alchimistes :"} border>
-        <ul>
-            {#each about as { name, website}}
-                <li>
-                    {#if website != '#'}
-                        <a target="_blank" href="{website}">{name}</a>
-                    {:else}
-                        {name}
-                    {/if}
-                </li>
-            {/each}
-        </ul>
-    </Article>
+  <Article title={"Les alchimistes :"} border>
+    <ul>
+      {#each about as { name, website }}
+        <li>
+          {#if website != "#"}
+            <a target="_blank" href={website}>{name}</a>
+          {:else}
+            {name}
+          {/if}
+        </li>
+      {/each}
+    </ul>
+  </Article>
 
-    <br/>
+  <br />
 </div>
