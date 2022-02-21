@@ -65,7 +65,7 @@
   const brokenSwordObject = { src: "epee_cassee", name: "PKC" };
 </script>
 
-<h3>{allAchievementsDone} succés déverrouillés sur {allAchievementsCount}</h3>
+<h3>{allAchievementsDone} succès déverrouillés sur {allAchievementsCount}</h3>
 
 {#each Object.keys(levelsData) as key}
   <div class="item row">
