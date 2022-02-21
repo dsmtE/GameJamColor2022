@@ -7,6 +7,7 @@
   import { level, hiddenAchievement } from "./stores.js";
   import shuffleArray from "./core/shuffleArray";
   import { saveProgression } from "./save.js";
+  import {Toast} from 'spaper';
 
   const dispatch = createEventDispatcher();
 
@@ -42,10 +43,10 @@
       // Hidden success
       if (mixingResult[0] === "PKC") {
         const newHiddenAchievement = { ...get(hiddenAchievement) };
-
+        
         newHiddenAchievement["brokenSword"] = true;
         Toast.open({
-          message: "Nouveau succès débloqué : brokenSword",
+          message: "Nouveau succès débloqué : Crafter l'épée légendaire",
           type: "warning",
           duration: 2000,
           position: "bottom"
