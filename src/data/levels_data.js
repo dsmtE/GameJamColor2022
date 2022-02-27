@@ -40,7 +40,11 @@ export default {
       { input: ['Tôle', 'Briquet'], output: ['Moteur'] },
       { input: ['Tournesol'], output: ['Huile de tournesol'] },
       { input: ['Ciseaux', 'Pétards'], output: ['Épée'] },
-      { input: ['Épée', 'Pétards'], output: ['PKC'] }
+      { input: ['Épée', 'Pétards'], output: ['PKC'] },
+      {
+        input: ['Tissu', 'Ciseaux', 'Crayons de couleur'],
+        output: ['Poulpy']
+      },
     ],
     easySolution: 'Échelle',
     expertSolution: 'Super-héros',
