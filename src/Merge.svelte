@@ -8,6 +8,7 @@
   import shuffleArray from "./core/shuffleArray";
   import { saveProgression } from "./save.js";
   import {Toast} from 'spaper';
+  import achivementsData from "./data/achivements_data.js";
 
   const dispatch = createEventDispatcher();
 
@@ -40,22 +41,28 @@
       resetMove();
       dispatch("newItem", mixingResult);
 
-      // Hidden success
-      if (mixingResult[0] === "PKC") {
-        const newHiddenAchievement = { ...get(hiddenAchievement) };
+      checkAchivements(mixingResult)
+    }
+  }
+
+  function checkAchivements(mixingResult) {
+    mixingResult.forEach(newItemName => {
+      var achivementFound = achivementsData.find(x => x.type == 'object' && x.objectName == newItemName);
+      if(achivementFound) {
         
-        newHiddenAchievement["brokenSword"] = true;
         Toast.open({
-          message: "Nouveau succès débloqué : Crafter l'épée légendaire",
+          message: achivementFound.message,
           type: "warning",
           duration: 2000,
           position: "bottom"
         })
-
+        
+        const newHiddenAchievement = { ...get(hiddenAchievement) };
+        newHiddenAchievement[newItemName] = true;
         hiddenAchievement.set(newHiddenAchievement);
         saveProgression();
       }
-    }
+    });
   }
 
   //DRAG N DROP

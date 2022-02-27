@@ -4,6 +4,7 @@
   import { levelsComplete, hiddenAchievement } from "./stores.js";
   import levelsData from "./data/levels_data.js";
   import imagesData from "./data/img_data.js";
+  import achivementsData from "./data/achivements_data.js";
 
   const allAchievements = {};
   let allAchievementsCount = 0;
@@ -62,7 +63,7 @@
     }
   }
   const questionObject = { src: "question", name: "Inconnu" };
-  const brokenSwordObject = { src: "epee_cassee", name: "PKC" };
+
 </script>
 
 <h3>{allAchievementsDone} succès déverrouillés sur {allAchievementsCount}</h3>
@@ -96,23 +97,21 @@
 {/each}
 
 <h3>Succès cachés</h3>
-
 <div class="item row">
-  {#if $hiddenAchievement["brokenSword"]}
-    <div class="col col-3 align-middle">
+  {#each achivementsData as achivement}
+     {#if achivement.type == 'object'}
+     <div class="col col-3 align-middle">
       <div class="difficulty true">
-        <p>Crafter l'épée légendaire</p>
-        <ImageComponent object={brokenSwordObject} />
+        <p>{achivement.title}</p>
+        <ImageComponent object={
+          $hiddenAchievement[achivement.objectName] ? 
+          {src: imagesData[achivement.objectName].src, name: achivement.objectName } :
+          questionObject
+        }/>
       </div>
     </div>
-  {:else}
-    <div class="col col-3 align-middle">
-      <div class="difficulty true">
-        <p>Crafter l'épée légendaire</p>
-        <ImageComponent object={questionObject} />
-      </div>
-    </div>
-  {/if}
+     {/if}
+  {/each}
 </div>
 
 <style>
